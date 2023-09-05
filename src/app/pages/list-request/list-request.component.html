@@ -1,0 +1,92 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"> User request</h4>
+                </div>
+
+
+
+                <ng-container *ngIf="requets">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        
+                                    </div>
+                                    <div class="mb-2 d-flex justify-content-between align-items-center">
+
+                                        <form    [formGroup]="searchBydateForm" (ngSubmit)="searchbyDateRemote()">
+                                            <div class="position-relative">
+                                                <label class="position-absolute " style="    COLOR: BLACK !important;">Start
+                                                    date </label>
+                                                <input class="form-control w-100 search" type="date"
+                                                    formControlName="start">
+                                            </div>
+                                            <div class="position-relative">
+                                                <label class="position-absolute " style="    COLOR: BLACK !important;">End
+                                                    date </label>
+                                                <input class="form-control w-100 search" type="date"
+                                                    formControlName="end">
+                                            </div>
+                                            <button class="btn btn-primary" type="submit">Filter <i class='bx bx-filter-alt'></i></button>
+                                            <button class="btn btn-warning" (click)="requestReport()">Export <i
+                                                    class='bx bxs-file-export'></i></button>
+    
+                                            </form>
+
+
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class="thead-light">
+                                                <tr>
+
+                                                    <th scope="col">Employee</th>
+                                                    <th scope="col">Request date</th>
+                                                    <th scope="col">Title</th>
+                                                    <th scope="col">Description</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="customtable">
+                                                <tr *ngFor="let item of requets">
+
+                                                    <td>{{item.user?.firstName}} {{item?.user?.lastName}}</td>
+                                                    <td>{{item.registrationDate|date:"yyyy-MM-dd"}}</td>
+                                                    <td>{{item.subject }}</td>
+                                                    <td>{{item.description}}</td>
+                                                    <ng-container *ngIf="!item.status">
+                                                        <td><label class="badge badge-danger" style="color: #ffffff;">Pending</label></td>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="item.status">
+                                                        <td><label class="badge badge-success" style="color: #ffffff;">Completed</label></td>
+                                                    </ng-container>
+
+                                                    <td> <i class='bx bx-check-square'
+                                                            (click)="validateRequest(item.id)"></i></td>
+
+                                                </tr>
+
+
+
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </ng-container>
+            </div>>
+        </div>
+    </div>
+</div>

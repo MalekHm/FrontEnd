@@ -1,0 +1,110 @@
+<div class="panel-header">
+    <div class="header text-center">
+      <h2 class="title">My Task</h2>
+      <p class="category">Please enter your Task
+        
+      </p>
+    </div>
+  </div>
+<div class="main-content" style="margin-top: 29px;">
+    <div class="card">
+        <div class="card-body">
+        
+         <div class="search">
+            
+            <form [formGroup]="taskForm"  >
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Subject</label>
+                  <input type="text" class="form-control" formControlName="title" id="exampleInputEmail1" aria-describedby="emailHelp">
+                   </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Description</label>
+                  <input type="text" class="form-control" formControlName="description" id="exampleInputPassword1">
+                </div>
+                
+                <button type="submit" class="btn btn-primary" (click)="onSubmit()"><i class='bx bx-plus'></i></button>
+                <button  class="btn btn-primary mb-3"><i class='bx bx-reset' (click)="reset()"></i></button>
+
+              </form>
+
+        
+            
+         
+           
+
+         </div>
+        </div>
+      </div>
+    <div class="row">
+        <div class="container col-md-12">
+
+            <div class="card  card-tasks">
+                <div class="card-header ">
+                  <h5 class="card-category" style="text-align: center;font-weight: bolder;">List of tasks</h5>
+                  <h4 class="card-title">Tasks</h4>
+                </div>
+                <div class="mb-2 d-flex justify-content-between align-items-center">
+        
+                  <form  class="search-form"   [formGroup]="searchBydateForm" (ngSubmit)="searchbyDateTask()">
+                    <div class="position-relative">
+                        <label class="position-absolute " style="    COLOR: BLACK !important;">Start
+                            date </label>
+                        <input class="form-control w-100 search" type="date"
+                            formControlName="start">
+                    </div>
+                    <div class="position-relative">
+                        <label class="position-absolute " style="    COLOR: BLACK !important;">End
+                            date </label>
+                        <input class="form-control w-100 search" type="date"
+                            formControlName="end">
+                    </div>
+                    <button class="btn btn-primary" type="submit">Filter <i class='bx bx-filter-alt'></i></button>
+                    <button class="btn btn-warning" (click)="taskReport()">Export <i
+                            class='bx bxs-file-export'></i></button>
+
+                    </form>
+                  
+              </div>
+                <div class="card-body ">
+                  <div class="table-full-width table-responsive">
+                    <table class="table">
+                      <tbody>
+                        <tr>
+                             
+                               <td>
+                                <span>Subject</span>
+                               </td>
+                               <td>
+                                <span>Description</span>
+                               </td>
+                               <td>
+                                <span>Start date</span>
+                               </td>
+                            
+                           
+                          </tr>
+                      
+                        <tr *ngFor="let item of tasks">
+                           
+                          <td class="text-left">{{item.title}} </td>
+                       
+                          <td class="text-left">{{item.description}} </td>
+                        
+                          <td class="text-left">{{item.registrationDate|date:"yyyy-MM-dd"}}  </td>
+                       
+                        </tr>
+                    
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="card-footer ">
+                  <hr>
+                  <div class="stats">
+                    <i class="now-ui-icons loader_refresh spin"></i> Updated 3 minutes ago
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        </div>

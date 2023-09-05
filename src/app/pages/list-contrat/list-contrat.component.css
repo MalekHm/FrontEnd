@@ -1,0 +1,7 @@
+.search{
+    display: flex;
+    justify-content: space-around;
+}
+button{
+    margin-top: 21px;
+}

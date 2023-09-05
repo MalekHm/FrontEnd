@@ -1,0 +1,11 @@
+title{
+    font-weight: bold;
+}
+
+.mb-4{
+    display: flex;
+    justify-content: space-between;
+}
+i{
+    cursor: pointer;
+}

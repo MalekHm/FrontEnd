@@ -1,0 +1,12 @@
+.bx-check-square{
+    font-size: 23px;
+    margin-left: 22px;
+    color: green;
+    cursor: pointer;
+}
+form{
+    display: contents;
+}
+label{
+    margin-top: -20px;
+}

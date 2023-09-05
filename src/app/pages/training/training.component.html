@@ -1,0 +1,178 @@
+ 
+<div class="main-content" style="margin-left: -38px;margin-top: 29px;">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card" style="width: 104%;">
+                <div class="card-body">
+                 To search a course in the catalog fill in one or more of the following search critteria<br>
+                 <div class="search">
+                    <div class="domain">
+                        <label>Domain</label>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="domain">
+                    <label>Theme</label>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-3">Search</button>
+                    <button type="submit" class="btn btn-primary mb-3" (click)="open()">New training</button>
+                  </div>
+                  
+
+                 </div>
+                 <table class="table table-dark table-hover">
+                 
+                  <thead>
+                    <tr>
+                      <th scope="col">Domain</th>
+                      <th scope="col">Theme</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Duration</th>
+                      <th scope="col">Unit</th>
+                      <th scope="col">Format</th>
+                      <th scope="col">Category</th>
+                      <th scope="col">Type</th>
+                      <th scope="col">Target function</th>
+                      <th scope="col">Certification</th>
+                      <th scope="col">Pre-requisites</th>
+                      <th scope="col">Action</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    
+                    <tr *ngFor="let item of trainings">
+                      <td  >{{item.domain}}</td>
+                      <td>{{item.theme}}</td>
+                      <td>{{item.description}}</td>
+                      <td>{{item.duration}}</td>
+                      <td >{{item.unit}}</td>
+                      <td>{{item.format}}</td>
+                      <td>{{item.category}}</td>
+                      <td>{{item.type}}</td>
+                      <td  >{{item.target}}</td>
+                      <td>{{item.certification}}</td>
+                      <td>{{item.pre_requistes}}</td>
+                      <td><i class="now-ui-icons ui-2_settings-90" (click)="membre(item.id)"></i></td>
+                    
+                    </tr>
+                  
+                  </tbody>
+                </table>
+                </div>
+              </div>
+              
+          
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade my-modal" tabindex="-1" role="dialog" #myModal  style="    overflow-y: auto;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+         <h5 class="modal-title">New trainning</h5>
+         <button type="button" class="close" (click)="close()" aria-label="Close"><span aria-hidden="true">&times;</span>
+         </button>
+      </div>
+      <div class="modal-body">
+        <section class="container">
+          <header>Add New trainning</header>
+          <form [formGroup]="trainingForm" (ngSubmit)="onSubmit()" class="form">
+            <div class="row">
+            <div class="input-box col-6">
+              <label>Domain</label>
+              <input formControlName="domain" type="text" placeholder="Enter Domain" required />
+            </div>
+            <div class="input-box col-6">
+              <label>Theme</label>
+              <input formControlName="theme" type="text" placeholder="Enter Theme" required />
+            </div>
+            <div class="input-box  ">
+              <label>Pre-requistes</label>
+              <input formControlName="pre_requires" type="text" placeholder="Enter Theme" required />
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-box col-4">
+              <label>Category</label>
+              <input  formControlName="category" type="text" placeholder="Enter Domain" required />
+            </div>
+            <div class="input-box col-4">
+              <label>Target</label>
+              <input formControlName="target" type="text" placeholder="Enter Theme" required />
+            </div>
+            <div class="input-box   col-4">
+              <label>Format</label>
+              <input formControlName="format" type="text" placeholder="Enter Theme" required />
+            </div>
+          </div>
+            <div class="column">
+              <div class="input-box">
+                <label>Duration</label>
+                <input formControlName="duration" type="text" placeholder="Enter Duration" required />
+              </div>
+              <div class="input-box">
+                <label>Unit</label>
+                <input formControlName="unit" type="text" placeholder="Enter birth date" required />
+              </div>
+            </div>
+           
+            <div class="input-box address">
+              <label>Description</label>
+              <input formControlName="description" type="text" placeholder="Enter street address" required />
+            
+              <div class="column">
+             
+                <div class="select-box">
+                  
+                  <select formControlName="type">
+                    <option value="Internal">Internal</option>
+                    <option value="External">External</option>
+                  </select>
+                </div>
+                <div class="select-box">
+               
+                  <select formControlName="certification">
+            
+                    <option  value=true>Yes</option>
+                    <option value=false>No</option>
+                    
+                  </select>
+                </div>
+              </div>
+              <div class="column">
+                <div class="input-box">
+                  <label>Start date</label>
+                  <input  formControlName="startDate" type="date" placeholder="Enter Duration" required />
+                </div>
+                <div class="input-box">
+                  <label>End date</label>
+                  <input formControlName="endDate" type="date" placeholder="Enter birth date" required />
+                </div>
+              </div>
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </section>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"  (click)="close()" >Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

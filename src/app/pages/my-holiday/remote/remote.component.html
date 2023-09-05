@@ -1,0 +1,103 @@
+ 
+<div class="main-content" style="margin-left: -38px;margin-top: 29px;">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card">
+                <div class="card-body">
+                                 <div class="search">
+                     
+                
+                                    <form [formGroup]="remoteForm" (ngSubmit)="onSubmit()" class="row g-3 needs-validation" >
+                                        <div class="col-md-6">
+                                          <label for="validationCustom01" class="form-label">Start date</label>
+                                          <input formControlName="start" type="date" class="form-control" id="validationCustom01"   required>
+                                           
+                                        </div>
+                                        <div class="col-md-6">
+                                          <label for="validationCustom02" class="form-label">End date</label>
+                                          <input formControlName="end" type="date" class="form-control" id="validationCustom02"   required>
+                                          
+                                        </div>
+                                        
+                                
+                                        <div class="col-md-6">
+                                          <label for="validationCustom03" class="form-label">Comment</label>
+                                          <input formControlName="comment" style="    height: 120px;" type="text" class="form-control" id="validationCustom03" required>
+                                         
+                                        </div>
+                                      
+                                        
+                                        <div class="col-12">
+                                          <button class="btn btn-primary" type="submit">Send</button>
+                                        </div>
+                                      </form>
+                  
+
+                 </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-header">
+                        <h5 class="card-category">Remote Request</h5>
+                        <h4 class="card-title"> Request List</h4>
+                      </div>
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table">
+                            <thead class=" text-primary">
+                              <th>
+                                Start date
+                              </th>
+                              <th>
+                               End date
+                              </th>
+                              <th>
+                                Comment
+                              </th>
+                              <th>
+                                Status
+                              </th>
+                            
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let item of remoteRequests">
+                                <td>
+                                {{item.start |date:"yyyy-MM-dd"}}
+                                </td>
+                                <td>
+                                  {{item.end|date:"yyyy-MM-dd"}}
+                                </td>
+                                <td>
+                                  {{item.comment}}
+                                </td>
+                              
+                                <td >
+                                  <ng-container *ngIf="item.valide">
+                                  
+                                  Confirmé
+                                </ng-container>
+                                <ng-container *ngIf="!item.valide">
+                                  
+                                 Pas Confirmé
+                                </ng-container>
+                                </td>
+                              </tr>
+                               
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+
+
+              
+            
+        </div>
+    </div>
+</div>
+
+
+ 

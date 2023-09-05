@@ -1,0 +1,485 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"> Plannings request</h4>
+                </div>
+                <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2"
+                    role="tablist"
+                    style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
+                   
+                    <li class="nav-item" role="presentation">
+                        <button (click)="remoteE()" class="nav-link active rounded-5" id="contact-tab2" data-bs-toggle="tab"
+                            type="button" role="tab" aria-selected="false">Remote</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button (click)="permissionE()" class="nav-link rounded-5" id="contact-tab2"
+                            data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Permission</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button (click)="holidayE()" class="nav-link  rounded-5" id="home-tab2"
+                            data-bs-toggle="tab" type="button" role="tab" aria-selected="true">Holiday</button>
+                    </li>
+                </ul>
+                <ng-container *ngIf="holiday">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title m-b-0">Holiday requets</h5>
+                                    </div>
+                                    <div class="mb-2 d-flex justify-content-between align-items-center">
+                                        <form    [formGroup]="searchBydateForm" (ngSubmit)="searchbyDateHoliday()"> 
+
+                                        <div class="position-relative">
+                                            <label class="position-absolute " style="    COLOR: BLACK !important;">Start
+                                                date </label>
+                                            <input class="form-control w-100 search" type="date"
+                                            formControlName="start">
+                                        </div>
+                                        <div class="position-relative">
+                                            <label class="position-absolute " style="    COLOR: BLACK !important;">End
+                                                date </label>
+                                            <input class="form-control w-100 search" type="date"
+                                            formControlName="end">
+                                        </div>
+                                        <button class="btn btn-primary" type="submit">Filter <i class='bx bx-filter-alt'></i></button>
+                                        <button class="btn btn-warning" (click)="holidayReport()">Export <i
+                                                class='bx bxs-file-export'></i></button>
+
+                                        </form>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class="thead-light">
+                                                <tr>
+
+                                                    <th scope="col">Employee</th>
+                                                    <th scope="col">Start date</th>
+                                                    <th scope="col">End date</th>
+                                                    <th scope="col">Request Date</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="customtable">
+                                                <tr *ngFor="let item of holidays">
+
+                                                    <td>{{item.user.firstName}} {{item.user.lastName}}</td>
+                                                    <td>{{item.start|date:"yyyy-MM-dd"}}</td>
+                                                 
+                                                    <td>{{item.end|date:"yyyy-MM-dd"}}</td>
+                                                    <td>{{item.registrationDate|date:"yyyy-MM-dd"}}</td>
+                                                    <ng-container *ngIf="!item.valide">
+                                                        <td><label class="badge badge-danger">Pending</label></td>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="item.valide">
+                                                        <td><label class="badge badge-success">Completed</label></td>
+                                                    </ng-container>
+
+                                                    <td> <i class='bx bx-check-square'
+                                                            (click)="validateHoliday(item.id)"></i></td>
+
+                                                </tr>
+
+
+
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </ng-container>
+
+
+                <ng-container *ngIf="remote">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title m-b-0">Remote requets</h5>
+                                    </div>
+                                    <div class="mb-2 d-flex justify-content-between align-items-center">
+                                        <form    [formGroup]="searchBydateForm" (ngSubmit)="searchbyDateRemote()">
+                                        <div class="position-relative">
+                                            <label class="position-absolute " style="    COLOR: BLACK !important;">Start
+                                                date </label>
+                                            <input class="form-control w-100 search" type="date"
+                                                formControlName="start">
+                                        </div>
+                                        <div class="position-relative">
+                                            <label class="position-absolute " style="    COLOR: BLACK !important;">End
+                                                date </label>
+                                            <input class="form-control w-100 search" type="date"
+                                                formControlName="end">
+                                        </div>
+                                        <button class="btn btn-primary" type="submit">Filter <i class='bx bx-filter-alt'></i></button>
+                                        <button class="btn btn-warning" (click)="remoteReport()">Export <i
+                                                class='bx bxs-file-export'></i></button>
+
+                                        </form>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class="thead-light">
+                                                <tr>
+
+                                                    <th scope="col">Employee</th>
+                                                    <th scope="col">Start date</th>
+                                                    <th scope="col">End date</th>
+                                                    <th scope="col">Request Date</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="customtable">
+                                                <tr *ngFor="let item of remotes">
+
+                                                    <td>{{item.user.firstName}} {{item.user.lastName}}</td>
+                                                    <td>{{item.start|date:"yyyy-MM-dd"}}</td>
+                                                    <td>{{item.end|date:"yyyy-MM-dd"}}</td>
+                                                    <td>{{item.registrationDate|date:"yyyy-MM-dd"}}</td>
+                                                    <ng-container *ngIf="!item.valide">
+                                                        <td><label class="badge badge-danger">Pending</label></td>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="item.valide">
+                                                        <td><label class="badge badge-success">Completed</label></td>
+                                                    </ng-container>
+
+                                                    <td> <i class='bx bx-check-square'
+                                                            (click)="validateRemote(item.id)"></i></td>
+
+                                                </tr>
+
+
+
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="permission">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title m-b-0">Permission requets</h5>
+                                    </div>
+                                    <div class="mb-2 d-flex justify-content-between align-items-center">
+                                        <form    [formGroup]="searchBydateForm" (ngSubmit)="searchbyDatePermission()">
+                                        <div class="position-relative">
+                                            <label class="position-absolute " style="    COLOR: BLACK !important;">Start
+                                                date </label>
+                                            <input class="form-control w-100 search" type="date"
+                                                formControlName="start">
+                                        </div>
+                                        <div class="position-relative">
+                                            <label class="position-absolute " style="    COLOR: BLACK !important;">End
+                                                date </label>
+                                            <input class="form-control w-100 search" type="date"
+                                                formControlName="end">
+                                        </div>
+                                        <button class="btn btn-primary" type="submit">Filter <i class='bx bx-filter-alt'></i></button>
+                                        <button class="btn btn-warning" (click)="permissionReport()">Export <i
+                                                class='bx bxs-file-export'></i></button>
+</form>
+
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class="thead-light">
+                                                <tr>
+
+                                                    <th scope="col">Employee</th>
+                                                    <th scope="col">Start hour</th>
+                                                    <th scope="col">End hour</th>
+                                                    <th scope="col">Request Date</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="customtable">
+                                                <tr *ngFor="let item of permissions">
+
+                                                    <td>{{item.user.firstName}} {{item.user.lastName}}</td>
+                                                    <td>{{item.start }}</td>
+                                                    <td>{{item.end }}</td>
+                                                    <td>{{item.registrationDate|date:"yyyy-MM-dd"}}</td>
+                                                    <ng-container *ngIf="!item.valide">
+                                                        <td><label class="badge badge-danger">Pending</label></td>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="item.valide">
+                                                        <td><label class="badge badge-success">Completed</label></td>
+                                                    </ng-container>
+
+                                                    <td> <i class='bx bx-check-square'
+                                                            (click)="validatePermission(item.id)"></i></td>
+
+                                                </tr>
+
+
+
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </ng-container>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="holiday-reports" style="background: white;
+display: none;">
+    <div class="page-content container" id="holiday_report" #holiday_report>
+         
+    
+        <div class="container px-0">
+            <div class="row mt-4">
+                <div class="col-12 col-lg-12">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="text-center text-150">
+                                <img src="../../../assets/log.png" style="    width: 52px;
+                                margin-right: 13px;"  />
+                                <span class="text-default-d3">Vermeg</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- .row -->
+    
+                    <hr class="row brc-default-l1 mx-n1 mb-4" />
+    
+                    <div class="row">
+                          
+                        <!-- /.col -->
+    
+                        <div class="text-95 col-sm-6 align-self-start d-sm-flex justify-content-end">
+                            <hr class="d-sm-none" />
+                            <div class="text-grey-m2">
+                                <div class="mt-1 mb-2 text-secondary-m1 text-600 text-125">
+                                    Holiday reportts
+                                </div>
+    
+                                          </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+    
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="thead-light">
+                                <tr>
+
+                                    <th scope="col">Employee</th>
+                                    <th scope="col">Start Date	</th>
+                                    <th scope="col">End Date</th>
+                                    <th scope="col">Request Date</th>
+                                  
+                                </tr>
+                            </thead>
+                            <tbody class="customtable">
+                                <tr *ngFor="let item of holidays">
+
+                                    <td>{{item.user.firstName}} {{item.user.lastName}}</td>
+                                    <td>{{item.start |date:"yyyy-MM-dd"}}</td>
+                                    <td>{{item.end|date:"yyyy-MM-dd" }}</td>
+                                    <td>{{item.registrationDate|date:"yyyy-MM-dd"}}</td>
+                                     
+
+                                   
+
+                                </tr>
+
+
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="holiday-reports" style="background: white;
+display: none;">
+    <div class="page-content container" id="permission_report" #permission_report>
+         
+    
+        <div class="container px-0">
+            <div class="row mt-4">
+                <div class="col-12 col-lg-12">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="text-center text-150">
+                                <img src="../../../assets/log.png" style="    width: 52px;
+                                margin-right: 13px;"  />
+                                <span class="text-default-d3">Vermeg</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- .row -->
+    
+                    <hr class="row brc-default-l1 mx-n1 mb-4" />
+    
+                    <div class="row">
+                          
+                        <!-- /.col -->
+    
+                        <div class="text-95 col-sm-6 align-self-start d-sm-flex justify-content-end">
+                            <hr class="d-sm-none" />
+                            <div class="text-grey-m2">
+                                <div class="mt-1 mb-2 text-secondary-m1 text-600 text-125">
+                                    Permissions reportts
+                                </div>
+    
+                                          </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+    
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="thead-light">
+                                <tr>
+
+                                    <th scope="col">Employee</th>
+                                    <th scope="col">Start hour	</th>
+                                    <th scope="col">End hour</th>
+                                    <th scope="col">Request Date</th>
+                                  
+                                </tr>
+                            </thead>
+                            <tbody class="customtable">
+                                <tr *ngFor="let item of permissions">
+
+                                    <td>{{item.user.firstName}} {{item.user.lastName}}</td>
+                                    <td>{{item.start  }}</td>
+                                    <td>{{item.end  }}</td>
+                                    <td>{{item.registrationDate|date:"yyyy-MM-dd"}}</td>
+                                     
+
+                                   
+
+                                </tr>
+
+
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="holiday-reports" style="background: white;
+display: none;">
+    <div class="page-content container" id="remote_report" #remote_report>
+         
+    
+        <div class="container px-0">
+            <div class="row mt-4">
+                <div class="col-12 col-lg-12">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="text-center text-150">
+                                <img src="../../../assets/log.png" style="    width: 52px;
+                                margin-right: 13px;"  />
+                                <span class="text-default-d3">Vermeg</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- .row -->
+    
+                    <hr class="row brc-default-l1 mx-n1 mb-4" />
+    
+                    <div class="row">
+                          
+                        <!-- /.col -->
+    
+                        <div class="text-95 col-sm-6 align-self-start d-sm-flex justify-content-end">
+                            <hr class="d-sm-none" />
+                            <div class="text-grey-m2">
+                                <div class="mt-1 mb-2 text-secondary-m1 text-600 text-125">
+                                    Remote reportts
+                                </div>
+    
+                                          </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+    
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="thead-light">
+                                <tr>
+
+                                    <th scope="col">Employee</th>
+                                    <th scope="col">Start day	</th>
+                                    <th scope="col">End day</th>
+                                    <th scope="col">Request Date</th>
+                                  
+                                </tr>
+                            </thead>
+                            <tbody class="customtable">
+                                <tr *ngFor="let item of remotes">
+
+                                    <td>{{item.user.firstName}} {{item.user.lastName}}</td>
+                                    <td>{{item.start|date:"yyyy-MM-dd"  }}</td>
+                                    <td>{{item.end |date:"yyyy-MM-dd" }}</td>
+                                    <td>{{item.registrationDate|date:"yyyy-MM-dd"}}</td>
+                                     
+
+                                   
+
+                                </tr>
+
+
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

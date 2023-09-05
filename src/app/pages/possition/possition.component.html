@@ -1,0 +1,146 @@
+<div class="panel-header"> 
+    <div class="header text-center">
+        <h2 class="title">Open position</h2>
+         
+    </div>
+  
+</div>
+<div class="main-content">
+    <div class="row">
+       
+        <div class="card">
+            <div class="card-body">
+             To search a open position in one or more of the following search critteria<br>
+             <div class="search">
+                <div class="domain">
+                    <label>Country</label>
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="domain">
+                <label>Company</label>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+        <div class="domain">
+            <label>Staffing request</label>
+        <select class="form-select" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+    </div> </div>
+    <div class="search">
+            <div class="domain">
+                <label>Open to expatriation</label>
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-3">Search</button>
+              </div>
+              <div class="col-auto">
+                <button type="submit" class="btn btn-success mb-3" (click)="open()">Add Open position</button>
+              </div>
+            
+
+             </div>
+             <table>
+            
+                <thead>
+                    <tr>
+                        <th>Staffing request</th>
+                        <th>Description</th>
+                        <th>Company</th>
+                        <th>Assignement date</th>
+                        <th>Open to expatriation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let item of positions">
+                  
+                    <tr>
+                        <td data-label="Projeto">{{item.stafing_request}}</td>
+                        <td data-label="Descrição">{{item.description}}</td>
+                        <td data-label="Administrador">{{item.company}}</td>
+                        <td data-label="Aplicações">{{item.assignement_date|date:'yyyy-MM-dd'}}</td>
+                        <td data-label="Criado">{{item.open_expatriation}}</td>
+                    </tr>
+                  </ng-container>
+                  
+                    
+                </tbody>
+            </table>
+            </div>
+          </div>
+    </div>
+</div>
+
+<div class="modal fade my-modal" tabindex="-1" role="dialog" #myModal  style="    overflow-y: auto;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+           <h5 class="modal-title">New Open position</h5>
+           <button type="button" class="close" (click)="close()" aria-label="Close"><span aria-hidden="true">&times;</span>
+           </button>
+        </div>
+        <div class="modal-body">
+            <div class="wrapper">
+                <header>Add new position</header>
+                <form [formGroup]="positionForm" (ngSubmit)="onSubmit()" >
+                  <div class="dbl-field">
+                    <div class="field">
+                        <label>Staffing request	</label>
+                      <input type="text" formControlName="stafing_request" name="name" placeholder="Enter your Staffing request">
+                       
+                    </div>
+                    <div class="field">
+                        <label>Open to expatriation	</label>
+                      <input type="text" formControlName="open_expatriation" name="email" placeholder="Enter your Open to expatriation	">
+                      
+                    </div>
+                  </div>
+                  <div class="dbl-field">
+                    <div class="field">
+                        <label>Assignement date		</label>
+                      <input type="date" formControlName="assignement_date" name="phone" placeholder="Enter your Assignement date	">
+                       
+                    </div>
+                    <div class="field">
+                        <label>Company</label>
+                      <input type="text" formControlName="company" name="website" placeholder="Enter your website">
+                      
+                    </div>
+                  </div>
+                  <div class="message">
+                    <label style="margin-top: 25px;">Description</label>
+                    <textarea formControlName="description" placeholder="Write your description" name="message"></textarea>
+                    
+                  </div>
+                  <div class="button-area">
+                    <button type="submit">Send Message</button>
+                    <span></span>
+                  </div>
+                </form>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary"  (click)="close()" >Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

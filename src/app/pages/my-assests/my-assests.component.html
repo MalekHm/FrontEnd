@@ -1,0 +1,51 @@
+<div class="panel-header">
+    <div class="header text-center">
+        <h2 class="title">Employee assets</h2>
+        <p class="category">Child request</p>
+    </div>
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button class="nav-link active" id="nav-my-internet-tab" data-bs-toggle="tab"
+                data-bs-target="#nav-my-internet" type="button" role="tab" 
+                aria-controls="nav-internet"
+                aria-selected="true">My internet subscription</button>
+
+            <button class="nav-link" id="nav-my-child-tab" data-bs-toggle="tab"
+             data-bs-target="#nav-my-child"
+                type="button" role="tab" aria-controls="nav-my-child" 
+                aria-selected="false">Child care request</button>
+         
+                <button class="nav-link" id="nav-my-gym-tab" data-bs-toggle="tab" 
+                data-bs-target="#nav-my-gym" 
+                type="button"
+                role="tab" aria-controls="nav-my-gym" aria-selected="false">Gym request</button>
+
+        </div>
+    </nav>
+</div>
+<div class="main-content">
+    <div class="row">
+
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-my-internet"
+             role="tabpanel"
+                aria-labelledby="nav-my-internet-tab" tabindex="0">
+                <app-my-internet-subscription></app-my-internet-subscription>
+
+            </div>
+
+            <div class="tab-pane fade show  " id="nav-my-child" role="tabpanel"
+             aria-labelledby="nav-my-child-tab"
+                tabindex="0">
+
+                <app-child-request></app-child-request>
+            </div>
+            <div class="tab-pane fade show  " id="nav-my-gym" role="tabpanel"
+             aria-labelledby="nav-my-gym-tab"
+                tabindex="0">
+
+                <app-gym-request></app-gym-request>
+            </div>
+        </div>
+    </div>
+</div>

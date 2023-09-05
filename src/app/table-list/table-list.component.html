@@ -1,0 +1,171 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> List of employees</h4>
+        </div>
+        <div class="card-body">
+          <div class="mb-2 d-flex justify-content-between align-items-center">
+
+            <div class="position-relative">
+                 <input class="form-control w-100 search" type="text" [(ngModel)]="value" (ngModelChange)="valuechange($event)"  style="width: 260px !important;height: 35px;"
+                    placeholder="Search by firstName , lastName ,email, ...">
+            </div>
+        
+            <button class="btn btn-primary" routerLink="/add-user">New Employee <i class='bx bx-filter-alt'></i></button>
+            <button class="btn btn-warning" >Export <i
+                    class='bx bxs-file-export'></i></button>
+
+
+        </div>
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                <th>
+                  Username
+                </th>
+                <th>
+                  First Name
+                </th>
+                <th>
+                  Last Name
+                </th>
+                <th  >
+                  Email
+                </th>
+                <th  >
+                  Birth day
+                </th>
+                <th  >
+                  Role
+                </th>
+                <th  >
+                 Action
+                </th>
+              </thead>
+              <tbody>
+<ng-container *ngFor="let item of users |paginate: { itemsPerPage: 5, currentPage: page };
+let i = index">
+  <ng-container *ngIf="item.id!=currentUser">
+  
+  <tr>
+    <td>
+      {{item.username}}
+    </td>
+    <td>
+      {{item.firstName}}
+    </td>
+    <td>
+      {{item.lastName}}
+    </td>
+    <td>
+      {{item.email}}
+    </td>
+    <td>
+      {{item.birthDay|date:'dd/MM/yyyy'}}
+    </td>
+    <td>
+      Employee
+    </td>
+
+    <td>
+      <i class='bx bx-edit-alt' style=" margin: 12px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #ff070c"></i>
+      <i class='bx bx-x' (click)="delete(item.id)" style=" margin: 12px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #ff070c"></i>
+    </td>
+  </tr>
+</ng-container>
+</ng-container>
+
+              
+
+              </tbody>
+            </table>
+            <div class="d-flex justify-content-center">
+              <pagination-controls
+                previousLabel=""
+                nextLabel=" "
+                (pageChange)="onTableDataChange($event)"
+              >
+              </pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+  </div>
+</div>
+
+<div  style="display: none;">
+  <div class="card" id="list_employee" #list_employee>
+    <div class="card-header">
+      <h4 class="card-title" style="text-align: center;"> List of employees</h4>
+    </div>
+    <div class="card-body">
+ 
+      <div class="table-responsive">
+        <table class="table">
+          <thead class=" text-primary">
+            <th>
+              Username
+            </th>
+            <th>
+              First Name
+            </th>
+            <th>
+              Last Name
+            </th>
+            <th  >
+              Email
+            </th>
+            <th  >
+              BirthDay
+            </th>
+           
+           
+          </thead>
+          <tbody>
+<ng-container *ngFor="let item of users">
+<ng-container *ngIf="item.id!=currentUser">
+
+<tr>
+<td>
+  {{item.username}}
+</td>
+<td>
+  {{item.firstName}}
+</td>
+<td>
+  {{item.lastName}}
+</td>
+<td>
+  {{item.email}}
+</td>
+<td>
+  {{item.birthDay|date:'dd/MM/yyyy'}}
+</td>
+ 
+ 
+</tr>
+</ng-container>
+</ng-container>
+
+          
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+

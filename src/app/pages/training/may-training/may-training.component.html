@@ -1,0 +1,64 @@
+ 
+<div class="main-content" style="margin-left: -38px;margin-top: 29px;">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card">
+                <div class="card-body">
+                 To search a course in the catalog fill in one or more of the following search critteria<br>
+                 <div class="search">
+                    <div class="domain">
+                        <label>Domain</label>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="domain">
+                    <label>Theme</label>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-3">Search</button>
+                  </div>
+                  
+
+                 </div>
+                 <table class="table">
+                  <thead>
+                    <th>Class description	</th>
+                    <th class="text-center">Training hours	</th>
+                    <th class="text-center">End date	</th>
+                    <th class="text-center">Start date	</th>
+                    <th class="text-center">Evaluation</th>
+                    <th class="text-center">Completed	</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of mytrainings">
+                      <td class="text-center">{{item.category}}</td>
+                      <td class="text-center">{{item.duration}}</td>
+                      <td class="text-center">{{item.endDate}}</td>
+                      <td class="text-center">{{item.startDate}}</td>
+                      <td class="text-center">{{item.evualuation}}</td>
+                      <td class="text-center">{{item.completed}}</td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+                </div>
+              </div>
+              
+           
+        </div>
+    </div>
+</div>
+
+
+ 

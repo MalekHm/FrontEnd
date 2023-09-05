@@ -1,0 +1,23 @@
+td{
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+form{
+    display: flex !important;
+    justify-content: space-between;
+}
+input{
+    width: 130%;
+}
+button{
+    
+    HEIGHT: 1%;
+    margin-top: 19px;
+}
+.search-form{
+    display: contents !important;
+}
+
+label{
+    margin-top: -23px;
+}

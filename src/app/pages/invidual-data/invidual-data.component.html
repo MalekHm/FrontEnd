@@ -1,0 +1,43 @@
+<div class="panel-header">
+    <div class="header text-center">
+        <h2 class="title">Invidual data assets</h2>
+        <p class="category">Invidual data assets</p>
+    </div>
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button class="nav-link active" id="nav-my-internet-tab" data-bs-toggle="tab"
+                data-bs-target="#nav-my-internet" type="button" role="tab" 
+                aria-controls="nav-internet"
+                aria-selected="true">HR communication</button>
+
+            <button class="nav-link" id="nav-my-child-tab" data-bs-toggle="tab"
+             data-bs-target="#nav-my-child"
+                type="button" role="tab" aria-controls="nav-my-child" 
+                aria-selected="false">HR document or reports</button>
+         
+            
+
+        </div>
+    </nav>
+</div>
+<div class="main-content">
+    <div class="row">
+
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-my-internet"
+             role="tabpanel"
+                aria-labelledby="nav-my-internet-tab" tabindex="0">
+             
+              <app-hr-communication></app-hr-communication>
+            </div>
+
+            <div class="tab-pane fade show  " id="nav-my-child" role="tabpanel"
+             aria-labelledby="nav-my-child-tab"
+                tabindex="0">
+
+                <app-hr-document></app-hr-document>
+            </div>
+          
+        </div>
+    </div>
+</div> 

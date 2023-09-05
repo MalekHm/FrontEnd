@@ -1,0 +1,85 @@
+<div class="panel-header panel-header-lg">
+    <canvas baseChart id="bigDashboardChart"
+                [datasets]="lineBigDashboardChartData"
+                [labels]="lineBigDashboardChartLabels"
+                 [colors]="lineBigDashboardChartColors"
+                [options]="lineBigDashboardChartOptions"
+                [chartType]="lineBigDashboardChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+</div>
+
+<div class="main-content">
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="card card-chart">
+        
+      
+      </div>
+    </div>
+   
+  
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card  card-tasks">
+        <div class="card-header ">
+          <h4 class="card-title">Tasks list</h4>
+        </div>
+        <div class="card-body ">
+          <div class="table-full-width table-responsive">
+            <table class="table">
+              <tbody>
+                <tr *ngFor="let item of user.tasks">
+                   
+                  <td class="text-left">{{item.title}}</td>
+                  <td class="text-left">{{item.registrationDate|date:"yyyy-MM-dd"}}</td>
+                </tr>
+               
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer ">
+          <hr>
+          <div class="stats">
+            <i class="now-ui-icons loader_refresh spin"></i> Updated 3 minutes ago
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card  card-tasks">
+        <div class="card-header ">
+          <h4 class="card-title">Requests list </h4>
+        </div>
+        <div class="card-body ">
+          <div class="table-full-width table-responsive">
+            <table class="table">
+              <tbody>
+                <tr *ngFor="let item of user.requests">
+                
+                  <td class="text-left">{{item.subject}}</td>
+                  <ng-container *ngIf="item.status">
+                          
+                    <td><i class='bx bxs-check-circle green'></i><span class="ms-1">Confirmed</span></td>
+                  </ng-container>
+                  <ng-container *ngIf="!item.status">
+                    
+                      <td><i class='bx bxs-check-circle  text-danger'></i><span class="ms-1">Not Confirmed</span></td>
+                    </ng-container>
+                </tr>
+            
+              
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>

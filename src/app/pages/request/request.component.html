@@ -1,0 +1,112 @@
+<div class="panel-header">
+    <div class="header text-center">
+      <h2 class="title">My request</h2>
+      <p class="category">Please enter your request
+        
+      </p>
+    </div>
+  </div>
+<div class="main-content" style="margin-top: 29px;">
+    <div class="card">
+        <div class="card-body">
+        
+         <div class="search">
+            
+            <form [formGroup]="requestForm" (ngSubmit)="onSubmit()" >
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Subject</label>
+                  <input type="text" class="form-control" formControlName="subject" id="exampleInputEmail1" aria-describedby="emailHelp">
+                   </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Description</label>
+                  <input type="text" class="form-control" formControlName="description" id="exampleInputPassword1">
+                </div>
+                
+                <button type="submit" class="btn btn-primary"><i class='bx bx-plus'></i></button>
+                <button  class="btn btn-primary mb-3"><i class='bx bx-reset' (click)="reset()"></i></button>
+              </form>
+        
+            
+         
+           
+
+         </div>
+        </div>
+      </div>
+    <div class="row">
+        <div class="container col-md-12">
+
+            <div class="card  card-tasks">
+                <div class="card-header ">
+                  <h5 class="card-category" style="text-align: center;font-weight: bolder;">List of requests</h5>
+                  <h4 class="card-title">Requets</h4>
+                </div>
+                <div class="mb-2 d-flex justify-content-between align-items-center">
+        
+                    <div class="position-relative">
+                        <label class="position-absolute "style="    COLOR: BLACK !important;;
+                        margin-top: -17px;">Start date </label>
+                        <input class="form-control w-100 search" type="date" placeholder="Search by order#, name...">
+                    </div>
+                    <div class="position-relative">
+                        <label class="position-absolute "style="    COLOR: BLACK !important;;
+                        margin-top: -17px;">End date </label>
+                        <input class="form-control w-100 search" type="date" placeholder="Search by order#, name...">
+                    </div>
+                    <button class="btn btn-primary">Filter <i class='bx bx-filter-alt' ></i></button>
+                    <button class="btn btn-warning">Export  <i class='bx bxs-file-export'></i></button>
+                
+                    
+                </div>
+                <div class="card-body ">
+                  <div class="table-full-width table-responsive">
+                    <table class="table">
+                      <tbody>
+                        <tr>
+                             
+                               <td>
+                                <span>Subject</span>
+                               </td>
+                               <td>
+                                <span>Description</span>
+                               </td>
+                               <td>
+                                <span>Request date</span>
+                               </td>
+
+                               <td>
+                                <span>Status</span>
+                               </td>
+                            
+                           
+                          </tr>
+                      
+                        <tr *ngFor="let item of tasks">
+                           
+                          <td class="text-left">{{item.subject}} </td>
+                       
+                          <td class="text-left">{{item.description}} </td>
+                        
+                          <td class="text-left">{{item.registrationDate|date:"yyyy-MM-dd"}}  </td>
+                          <ng-container *ngIf="item.status">
+                          
+                          <td><i class='bx bxs-check-circle green'></i><span class="ms-1">Confirmed</span></td>
+                        </ng-container>
+                        <ng-container *ngIf="!item.status">
+                          
+                            <td><i class='bx bxs-check-circle  text-danger'></i><span class="ms-1">Not Confirmed</span></td>
+                          </ng-container>
+                        </tr>
+                    
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="card-footer ">
+                  <hr>
+                
+                </div>
+              </div>
+            </div>
+        </div>
+        </div>
