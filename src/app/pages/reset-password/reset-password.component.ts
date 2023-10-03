@@ -32,7 +32,7 @@ export class ResetPasswordComponent implements OnInit {
       this.toastService.success('Password reseted with succes !' , '',{timeOut: 8000,
       closeButton: true,
       enableHtml: true,
-      toastClass: "alert alert-info alert-with-icon" ,
+      toastClass: "alert alert-info alert-with-icon" ,  
       positionClass: 'toast-' + from + '-' +  align})    
       this.router.navigate(['/'])
     })
