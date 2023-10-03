@@ -1,0 +1,164 @@
+<div class="panel-header panel-header-sm" style="background-image: url('assets/img/lvv.jpeg');margin-top: -1px;height:262px !important ;">
+</div>
+<div class="main-content" style="margin-top: -46px !important;">
+  <div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card" style="border-radius: 15px;">
+          <div class="container bootstrap snippets bootdey">
+            <div class="row">
+              <div class="profile-nav col-md-3">
+                <div class="panel imgp">
+                  <div class="user-heading round" style="    margin-top: -14px;">
+                    <a   style="    border: 1px solid rgba(255,255,255,.3);">
+                      <img style="width: 139px;height: 140px;" *ngIf="user.profilImage==null" src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="">
+                      <img style="width: 125px;
+                      height: 144px;" *ngIf="user.profilImage!=null"  src="http://localhost:8081/api/user/downloadFile/{{user.profilImage}}" alt="avatar">
+                    </a>
+                    <h1 style="    margin-top: 20px;">{{user.username}}</h1>
+                    <p>{{user.email}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="profile-info col-md-9">
+
+                <div class="panel">
+                 
+                  <div class="panel-body bio-graph-info bio">
+                    <h1 style="    font-weight: 700;">Bio Graph</h1>
+                  <p class="bio-profile">{{user.aboutme}}</p>  
+                    <div class="row">
+                      <div class="bio-row">
+                        <p><span>First Name </span>: {{user.firstName}}</p>
+                      </div>
+                      <div class="bio-row">
+                        <p><span>Last Name </span>: {{user.lastName}}</p>
+                      </div>
+                      <div class="bio-row">
+                        <p><span>Adresse </span>: {{user.address}}</p>
+                      </div>
+                      <div class="bio-row">
+                        <p><span>Birthday</span>:{{user.birthDay|date:'yyyy-MM-dd'}}</p>
+                      </div>
+                      <div class="bio-row">
+                        <p><span>Occupation </span>: {{user.profil}}</p>
+                      </div>
+                      <div class="bio-row">
+                        <p><span>Email </span>: {{user.email}}</p>
+                      </div>
+                      <div class="bio-row">
+                        <p><span>Mobile </span>: {{user.phone}}</p>
+                      </div>
+                      <div class="bio-row">
+                        <p><span>Civil status </span>: {{user.civil_status}}</p>
+                      </div>
+                    </div>
+                  </div>
+                   
+                </div>
+             
+              </div>
+            </div>
+          </div>
+          <div class="" style="    margin-top: -40px;">
+            <div class="card-header">
+              <!--<h5 class="card-category title-stat" style="text-align: center;">Skills statistic</h5>-->
+           
+            </div>
+          <div class="panel-header panel-header-lg stats " >
+            <canvas baseChart id="bigDashboardChart" [datasets]="lineBigDashboardChartData"
+              [labels]="lineBigDashboardChartLabels" [colors]="lineBigDashboardChartColors"
+              [options]="lineBigDashboardChartOptions" [chartType]="lineBigDashboardChartType"
+              (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+          </div>
+        </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="card card-chart">
+
+
+              </div>
+            </div>
+
+
+          </div>
+          <div>
+            <div class="row">
+              <div class="col-md-6 card-p reqS" style="MARGIN-BOTTOM: 42px;">
+                <div class="panel">
+                  <div class="panel-body">
+                    <div class="bio-chart">
+                      <div style="display:inline;width:100px;height:100px;"><canvas width="100"
+                          height="100px"></canvas><input class="knob" data-width="100" data-height="100"
+                          data-displayprevious="true" data-thickness=".2" [value]="nbRequest" data-fgcolor="#e06b7d"
+                          data-bgcolor="#e8e8e8"
+                          style="
+                          width: 99px;
+                          height: 72px;
+                          position: absolute;
+                          vertical-align: middle;
+                          margin-top: 33px;
+                          margin-left: -77px;
+                          border: 0px;
+                          font-weight: bold;
+                          font-style: normal;
+                          font-variant: normal;
+                          font-stretch: normal;
+                          font-size: 57px;
+                          line-height: normal;
+                          font-family: Arial;
+                          text-align: center;
+                          color: rgb(224, 107, 125);
+                          padding: 0px;
+                          -webkit-appearance: none;
+                          background: none;">
+                      </div>
+                    </div>
+                    <div class="bio-desk">
+                      <h4 class="red">Requests</h4>
+                      <p>Accepted : {{nbRequestA}} </p>
+                      <p>Pending : {{nbRequestR}} </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 card-p" style="    margin-left: 31px;MARGIN-BOTTOM: 42px;">
+                <div class="panel">
+                  <div class="panel-body">
+                    <div class="bio-chart">
+                      <div style="display:inline;width:100px;height:100px;"><canvas width="100"
+                          height="100px"></canvas>
+                          <input class="knob" data-width="100" data-height="100"
+                          data-displayprevious="true" data-thickness=".2" value="30" data-fgcolor="#4CC5CD"
+                          data-bgcolor="#e8e8e8"
+                          style="  width: 99px;
+                          height: 72px;
+                          position: absolute;
+                          vertical-align: middle;
+                          margin-top: 33px;
+                          margin-left: -77px;
+                          border: 0px;
+                          font-weight: bold;
+                          font-style: normal;
+                          font-variant: normal;
+                          font-stretch: normal;
+                          font-size: 57px; line-height: normal; font-family: Arial; text-align: center; color: rgb(76, 197, 205); padding: 0px; -webkit-appearance: none; background: none;">
+                      </div>
+                    </div>
+                    <div class="bio-desk">
+                      <h4 class="terques">Holiday </h4>
+                      <p>Take : {{nbDayH}} </p>
+                      <p>Rest : {{30-nbDayH}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+             
+            </div>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

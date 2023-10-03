@@ -1,0 +1,130 @@
+<div class="panel-header">
+  <div class="header text-center">
+    <div class="breadmup">
+     <div class="dashboard">
+       <i class='bx bx-home'></i>
+       Dashboard  
+     </div>
+     <div class="pages">
+         / 
+     </div>
+     <div class="pages">
+      <i class='bx bx-git-pull-request' ></i>
+       Requets
+     </div>
+    </div>
+     </div>
+  </div>
+<div class="main-content" style="margin-top: 29px;">
+    <div class="card">
+        <div class="card-body">
+        
+         <div class="search">
+            
+            <form [formGroup]="requestForm"  >
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Subject</label>
+                  <input type="text" class="form-control" formControlName="subject" id="exampleInputEmail1" aria-describedby="emailHelp">
+                   </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Description</label>
+                  <input type="text" class="form-control" formControlName="description" id="exampleInputPassword1">
+                </div>
+                
+                <button (click)="onSubmit()" type="submit" class="btn btn-primary"><i class='bx bx-plus'></i></button>
+                <button  class="btn btn-primary mb-3"><i class='bx bx-reset' (click)="reset()"></i></button>
+              </form>
+        
+            
+         
+           
+
+         </div>
+        </div>
+      </div>
+    <div class="row">
+        <div class="container col-md-12">
+
+            <div class="card  card-tasks">
+                <div class="card-header ">
+                  <h5 class="card-category" style="text-align: center;font-weight: bolder;margin-bottom: 40px;">List of requests</h5>
+        
+                </div>
+                <div class=" align-items-center">
+                 <form class="search-form dateS"   [formGroup]="searchBydateForm" (ngSubmit)="searchbyDateTask()">
+                    <div class="position-relative">
+                        <label class="position-absolute "style="    COLOR: BLACK !important;;
+                        margin-top: -17px;">Start date </label>
+                        <input class="form-control w-100 search" formControlName="start" type="date" placeholder="Search by order#, name...">
+                    </div>
+                    <div class="position-relative">
+                        <label class="position-absolute "style="    COLOR: BLACK !important;;
+                        margin-top: -17px;">End date </label>
+                        <input class="form-control w-100 search" formControlName="end" type="date" placeholder="Search by order#, name...">
+                    </div>
+                    <button type="submit" style="margin-top: -5px;" class="btn btn-primary">Filter <i class='bx bx-filter-alt' ></i></button>
+                  </form>
+                
+                    
+                </div>
+                <div class="card-body ">
+                  <div class="table-full-width  ">
+                    <table class="table">
+                      <tbody>
+                        <tr>
+                             
+                               <td>
+                                <span>Subject</span>
+                               </td>
+                               <td>
+                                <span>Description</span>
+                               </td>
+                               <td>
+                                <span>Request date</span>
+                               </td>
+
+                               <td>
+                                <span>Status</span>
+                               </td>
+                            
+                           
+                          </tr>
+                      
+                        <tr *ngFor="let item of tasks">
+                           
+                          <td class="text-left">{{item.subject}} </td>
+                       
+                          <td class="text-left">{{item.description}} </td>
+                        
+                          <td class="text-left">{{item.registrationDate|date:"yyyy-MM-dd"}}  </td>
+                          <ng-container *ngIf="item.status">
+                          
+                          <td>
+                            <ng-container *ngIf="item.status=='Rejected'">
+                              <td><label style="    padding: 6px;
+                                color: #fff !important;" class="badge badge-danger">Rejected</label></td>
+                          </ng-container>
+                          <ng-container *ngIf="item.status=='Accepted'">
+                              <td><label style="    padding: 6px;
+                                color: #fff !important;" class="badge badge-success">Accepted</label></td>
+                          </ng-container>
+                          <ng-container *ngIf="item.status=='Pending'">
+                              <td><label style="    padding: 6px;
+                                color: #fff !important;" class="badge badge-warning">Pending</label></td>
+                          </ng-container>
+                              </td>
+                          </ng-container>
+                        </tr>
+                    
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="card-footer ">
+                  <hr>
+                
+                </div>
+              </div>
+            </div>
+        </div>
+        </div>

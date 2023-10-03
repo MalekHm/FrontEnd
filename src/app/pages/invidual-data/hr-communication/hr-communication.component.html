@@ -1,0 +1,139 @@
+<div class="main-content" style="margin-left: -38px;margin-top: 29px;">
+    <div class="row">
+      <div class="col-md-12">
+  
+        <div class="card">
+          <div class="card-body">
+  
+          </div>
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-category">HR Communication</h5>
+              
+              </div>
+              <div class="card-body">
+                <div>
+                  <div class="d-flex flex-wrap">
+                    <h5 class="font-size-16 me-3"> </h5>
+                    <div class="ms-auto" *ngIf="role=='admin'">
+                      <button class="fw-medium text-reset" (click)="open()">New document</button>
+                    </div>
+                  </div>
+                  <hr class="mt-2">
+                  <div>
+                    <table class="table align-middle table-nowrap table-hover mb-0">
+                      <thead class="table-light">
+                        <tr>
+                          <th scope="col">Title</th>
+                          <th scope="col">Approyed Date</th>
+                          <th scope="col">Expiration Date</th>
+                          <th scope="col"  >Code Policy</th>
+                          <th scope="col"  >Download</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of documents">
+                          <ng-container *ngIf="item.type=='HR Communication'">
+                          
+                          <td>{{item.title}} </td>
+                          <td>{{item.approyedDate|date:'yyyy-MM-dd'}}</td>
+                          <td>{{item.expirationDate|date:'yyyy-MM-dd'}}</td>
+                          <td>{{item.codePolicy}}</td>
+                          <td><a (click)="downloadFile(item.name)">{{item.name}}</a></td>
+                        </ng-container>
+                        </tr>
+  
+  
+  
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+  
+  
+  
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="modal fade my-modal" tabindex="-1" role="dialog" #myModal style="    overflow-y: auto;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">New Document</h5>
+           
+        </div>
+        <div class="modal-body">
+          <div class=" ">
+           
+            <form [formGroup]="documentForm" (ngSubmit)="onSubmit()">
+              <div class="dbl-field">
+                <div class="field">
+                  <label>Title </label>
+                  <input class="form-control" type="text" formControlName="title" >
+  
+                </div>
+  
+                <div class="field">
+                  <label>Approyed Date</label>
+                  <input class="form-control" type="date" formControlName="approyedDate"   >
+  
+  
+                </div>
+  
+              </div>
+  
+              <div class="dbl-field">
+                <div class="field">
+                  <label>Document </label>
+                  <input type="file" class="form-control" (change)="selectFile($event)">
+  
+                </div>
+                <div class="field">
+                  <label>Type </label>
+                  <select   formControlName="type" class="form-control">
+  
+                    <option value="HR Communication">HR Communication</option>
+                    <option  value="Document OR Report">Document OR Report</option>
+  
+                  </select>
+                </div>
+              </div>
+              <div class="dbl-field">
+                <div class="field">
+                  <label>Expiration Date </label>
+                  <input type="date" formControlName="expirationDate"  class="form-control">
+  
+                </div>
+                <div class="field">
+                  <label>Code Policy</label>
+                  <input type="text" formControlName="codePolicy" class="form-control"  >
+  
+                </div>
+              </div>
+              <div class="message">
+                <label style="margin-top: 25px;">Description</label>
+                <textarea formControlName="description"  class="form-control"></textarea>
+  
+              </div>
+              <div class="button-area">
+                <button type="submit">Save</button>
+                <span></span>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="close()">Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

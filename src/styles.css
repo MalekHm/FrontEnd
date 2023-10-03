@@ -1,0 +1,52 @@
+/* You can add global styles to this file, and also import other style files */
+button {
+    padding: 20px 50px !important;
+    font-size: 1.5rem !important;
+    cursor: pointer !important;
+    border: 0px !important;
+    background: transparent !important;
+    position: relative !important;
+    transition: all .2s !important;
+    overflow: hidden !important;
+    color: #fff !important;
+    border-radius: 30px !important;
+    box-shadow: 0px -0px 0px 0px rgba(143, 64,   248, .5), 0px 0px 0px 0px rgba(39, 200, 255, .5)!important;
+  }
+  button::after {
+    content: ''!important;
+    width: 400px!important;
+    height: 400px!important;
+    position: absolute!important;
+    top: -50px!important;
+    left: -100px!important;
+    background-image: linear-gradient(225deg,   #27d86c 0%, #26caf8 50%, #c625d0 100%)!important;
+    z-index: -1!important;
+    transition: all .5s!important;
+  }
+
+  button:hover::after {
+    transform: rotate(150deg)!important;
+  }
+  
+  button:hover {
+    transform: translate(0,-6px)!important;
+    box-shadow: 10px -10px 25px 0px rgba(143,   64, 248, .25), -10px 10px 25px 0px rgba(39, 200,   255, .25)!important;
+  }
+  .form-control {
+    background-color: transparent;
+    border: 2px solid #9a9a9a;
+    border-radius: 30px;
+    color: #2c2c2c;
+    line-height: normal;
+    font-size: .8571em;
+    height: auto;
+    transition: color .3s ease-in-out,border-color .3s ease-in-out,background-color .3s ease-in-out;
+    box-shadow: none;
+} 
+
+.table .thead-light th {
+  color: #495057 !important;
+  background-color: #e9ecef !important;
+  border-color: #dee2e6 !important;
+  font-size: 14px !important;
+}

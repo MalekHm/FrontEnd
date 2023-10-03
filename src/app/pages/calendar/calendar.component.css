@@ -1,0 +1,247 @@
+.nav-link{
+    color: #ffff !important;
+}
+
+.breadmup{
+    color: white;
+    display: flex;
+    margin-left: 25px;
+    font-size: 14px;
+}
+.pages{
+    margin-left: 12px;
+}
+
+input,textarea,button,select{
+    border-radius: 30px !important;
+    padding: 10px 18px !important;
+    height: auto !important;
+  }
+  button {
+    background: #ff070c !important;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer!important;
+    border: 0px;
+    
+    
+    transition: all .2s!important;
+    overflow: hidden!important;
+    color: #fff!important;
+    border-radius: 30px!important;
+    box-shadow: 0 -0px 0 0 red !important;
+  }
+  button::after {
+    content: ''!important;
+    width: 400px!important;
+    height: 400px!important;
+    position: absolute!important;
+    top: -50px!important;
+    left: -100px!important;
+    background-image: linear-gradient(225deg,   #27d86c 0%, #26caf8 50%, #c625d0 100%)!important;
+    z-index: -1!important;
+    transition: all .5s!important;
+  }
+  
+  button:hover::after {
+    transform: rotate(150deg)!important;
+  }
+  
+  button:hover {
+    transform: translateY(-6px)!important;
+    background: #ff070c !important;
+    box-shadow: 0 3px 8px #0000002b !important;
+    font-size: 10px !important;
+    } 
+
+     
+ 
+
+ 
+
+.my-modal {
+    display: block;
+    background: rgba(0, 0, 0, 0.5);
+    height: 100vh;
+    width: 0;
+    }
+    .modal-content{
+        
+        WIDTH: 891px;
+        left: -187px;
+    }
+
+    .fade {
+        opacity: 0;
+        transition: opacity .15s linear;
+    }
+    .modal-backdrop.show {
+        opacity: .5;
+    }
+    .modal-backdrop.fade {
+        opacity: 0;
+    }
+    .fade.show {
+        opacity: 1;
+    }
+
+    ::selection{
+        color: #fff;
+        background: #0D6EFD;
+      }
+      .wrapper{
+        width: 715px;
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 1px 19px 33px 15px #0000000d;
+        margin-left: 61px;
+      }
+      .wrapper header{
+        font-size: 22px;
+        font-weight: 600;
+        padding: 20px 30px;
+        border-bottom: 1px solid #ccc;
+      }
+      .wrapper form{
+        margin: 35px 30px;
+      }
+      .wrapper form.disabled{
+        pointer-events: none;
+        opacity: 0.7;
+      }
+      form .dbl-field{
+        display: flex;
+        margin-bottom: 25px;
+        justify-content: space-between;
+      }
+      .dbl-field .field{
+        height: 50px;
+        margin-top: 27px;
+        position: relative;
+        width: calc(100% / 2 - 13px);
+      }
+      .wrapper form i{
+        position: absolute;
+        top: 50%;
+        left: 18px;
+        color: #ccc;
+        font-size: 17px;
+        pointer-events: none;
+        transform: translateY(-50%);
+      }
+      form .field input,
+      form .message textarea, select{
+        width: 100%;
+        height: 100%;
+        outline: none;
+        padding: 0 18px 0 11px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      .field input::placeholder,
+      .message textarea::placeholder{
+        color: #ccc;
+      }
+      .field input:focus,
+      .message textarea:focus{
+        padding-left: 47px;
+        border: 2px solid #0D6EFD;
+      }
+      .field input:focus ~ i,
+      .message textarea:focus ~ i{
+        color: #0D6EFD;
+      }
+      form .message{
+        position: relative;
+      }
+      form .message i{
+        top: 30px;
+        font-size: 20px;
+      }
+      form .message textarea{
+        min-height: 130px;
+        max-height: 230px;
+        max-width: 100%;
+        min-width: 100%;
+        padding: 15px 20px 0 48px;
+      }
+      form .message textarea::-webkit-scrollbar{
+        width: 0px;
+      }
+      .message textarea:focus{
+        padding-top: 14px;
+      }
+      form .button-area{
+        margin: 25px 0;
+        display: flex;
+        align-items: center;
+      }
+     
+  
+
+    input:focus-visible,select:focus-visible,textarea:focus-visible{
+        outline: 1px solid #ff070c !important;
+          background: #f3f4f6 !important;
+          font-size: 15px !important;
+          border-radius: 30px !important;
+        
+      }
+      input,textarea,button,select{
+        border-radius: 30px !important;
+        padding: 10px 18px !important;
+        height: auto !important;
+      }
+      button {
+        background: #ff070c !important;
+        font-weight: bold;
+        font-size: 13px;
+        cursor: pointer!important;
+        border: 0px;
+        
+        
+        transition: all .2s!important;
+        overflow: hidden!important;
+        color: #fff!important;
+        border-radius: 30px!important;
+        box-shadow: 0 -0px 0 0 red !important;
+      }
+      button::after {
+        content: ''!important;
+        width: 400px!important;
+        height: 400px!important;
+        position: absolute!important;
+        top: -50px!important;
+        left: -100px!important;
+        background-image: linear-gradient(225deg,   #27d86c 0%, #26caf8 50%, #c625d0 100%)!important;
+        z-index: -1!important;
+        transition: all .5s!important;
+      }
+      
+      button:hover::after {
+        transform: rotate(150deg)!important;
+      }
+      
+      button:hover {
+        transform: translateY(-6px)!important;
+        background: #ff070c !important;
+        box-shadow: 0 3px 8px #0000002b !important;
+        font-size: 10px !important;
+        } 
+        a{
+          cursor: pointer;
+        }
+        a:hover{
+          text-decoration: underline;
+          color: red;
+          font-weight: 600;
+        }
+        label{
+          color: #242424 !important;
+          font-weight: bold !important;
+          font-size: 13px !important;
+        }
+        input:hover,textarea:hover,select:hover{
+          border-color:#c3c6cb !important;
+          box-shadow: 0px 1px 4px red;
+      }

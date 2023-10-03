@@ -1,0 +1,27 @@
+.breadmup{
+    color: white;
+    display: flex;
+    margin-left: 25px;
+    font-size: 14px;
+}
+.pages{
+    margin-left: 12px;
+}
+
+.alert{
+    border-radius: 12px!important;
+    margin-top: -24px!important;
+    max-width: 869px!important;
+    margin-left: 84px!important;
+}
+.new{
+    background: limegreen;
+}
+
+.notif{
+    
+    text-align: center;
+    font-weight: bold;
+    margin-top: -1px;
+    margin-bottom: 50px;
+}

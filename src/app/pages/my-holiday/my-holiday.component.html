@@ -1,0 +1,78 @@
+<div class="panel-header panel-header-sm" style="    height: 195px;">
+  
+    <div class="header text-center">
+        <div class="breadmup">
+         <div class="dashboard">
+           <i class='bx bx-home'></i>
+           Dashboard  
+         </div>
+         <div class="pages">
+             / 
+         </div>
+         <div class="pages">
+            <i class='bx bx-time-five'></i>
+          Planings
+         </div>
+        </div>
+         </div>
+    
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        
+
+            <button class="nav-link active" id="nav-my-Presnece-tab" data-bs-toggle="tab"
+             data-bs-target="#nav-my-Presnece"
+                type="button" role="tab" aria-controls="nav-my-Presnece" 
+                aria-selected="false">Presence</button>
+         
+                <button class="nav-link" id="nav-my-Remote-tab" data-bs-toggle="tab" 
+                data-bs-target="#nav-my-Remote" 
+                type="button"
+                role="tab" aria-controls="nav-my-Remote" aria-selected="false">Remote request</button>
+
+                <button class="nav-link" id="nav-my-Permission-tab" data-bs-toggle="tab" 
+                data-bs-target="#nav-my-Permission" 
+                type="button"
+                role="tab" aria-controls="nav-my-Permission" aria-selected="false">Permission request</button>
+                <button class="nav-link " id="nav-my-holiday-tab" data-bs-toggle="tab"
+                data-bs-target="#nav-my-holiday" type="button" role="tab" 
+                aria-controls="nav-holiday"
+                aria-selected="true">Holiday</button>
+        </div>
+    </nav>
+</div>
+<div class="main-content">
+    <div class="row">
+
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active " id="nav-my-Presnece" role="tabpanel"
+            aria-labelledby="nav-my-Presnece-tab"
+               tabindex="0">
+               <app-presence></app-presence>
+                
+           </div>
+            <div class="tab-pane fade show " id="nav-my-holiday"
+             role="tabpanel"
+                aria-labelledby="nav-my-holiday-tab" tabindex="0">
+               <app-holiday></app-holiday>
+
+               
+            </div>
+
+        
+            
+
+            <div class="tab-pane fade show  " id="nav-my-Remote" role="tabpanel"
+            aria-labelledby="nav-my-Remote-tab"
+               tabindex="0">
+                <app-remote></app-remote>
+           </div>
+
+           <div class="tab-pane fade show  " id="nav-my-Permission" role="tabpanel"
+           aria-labelledby="nav-my-Permission-tab"
+              tabindex="0">
+              <app-permission></app-permission>
+          </div>
+        </div>
+    </div>
+</div>

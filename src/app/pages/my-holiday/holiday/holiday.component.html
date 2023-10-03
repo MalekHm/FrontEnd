@@ -1,0 +1,121 @@
+ 
+<div class="main-content" style="margin-left: -38px;margin-top: 29px;">
+  <div class="row">
+      <div class="col-md-12">
+
+          <div class="card">
+              <div class="card-body">
+                               <div class="search">
+                    
+                                <h5 class="card-category">Holiday Request</h5>
+                                  <form [formGroup]="holidayForm" (ngSubmit)="onSubmit()" class="row g-3 needs-validation" >
+                                      <div class="col-md-6">
+                                       
+                                        <label for="validationCustom01" class="form-label">Choise date</label>
+                                         <input 
+                                        class="form-control"
+                                        type="text" matInput
+                                        (datesUpdated)="datesUpdated($event)"
+                                       
+                                        ngxDaterangepickerMd
+                                        [locale]="{applyLabel: 'ok', format: 'DD/MM/YYYY'}"
+                                        startKey="start"
+                                        endKey="end"
+                                        [(ngModel)]="selected"
+                                        
+                                        name="daterange"/>
+
+                                        <i class='bx bxs-calendar' style="    position: absolute;
+                               left: 550px;
+                                        top: 35px;"></i>
+                                      </div>
+                                     
+                                      
+                              
+                                      <div class="col-md-6">
+                                        <label for="validationCustom03" class="form-label">Comment</label>
+                                        <input formControlName="comment" style="    height: 120px;" type="text" class="form-control textarea" id="validationCustom03" required>
+                                       
+                                      </div>
+                                    
+                                      
+                                      <div class="col-12">
+                                        <button class="btn btn-primary" type="submit">Send</button>
+                                      </div>
+                                    </form>
+                
+
+               </div>
+              </div>
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header">
+
+                    <h4 class="card-title">Holiday List</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead class=" text-primary">
+                          <th>
+                            Start date
+                          </th>
+                          <th>
+                            End date
+                          </th>
+                          <th>
+                            Comment
+                          </th>
+                          <th>
+                            Status
+                          </th>
+                          
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of holidayRequests">
+                            <td>
+                            {{item.start}}
+                            </td>
+                            <td>
+                              {{item.end}}
+                            </td>
+                            <td>
+                              {{item.comment}}
+                            </td>
+                          
+                            <ng-container *ngIf="item.status=='Rejected'">
+                              <td><label style="    padding: 6px;
+                                color: #fff !important;" class="badge badge-danger">Rejected</label></td>
+                          </ng-container>
+                          <ng-container *ngIf="item.status=='Accepted'">
+                              <td><label style="    padding: 6px;
+                                color: #fff !important;" class="badge badge-success">Accepted</label></td>
+                          </ng-container>
+                          <ng-container *ngIf="item.status=='Pending'">
+                              <td><label style="    padding: 6px;
+                                color: #fff !important;" class="badge badge-warning">Pending</label></td>
+                          </ng-container>
+
+                          
+
+                      </tr>
+
+                        
+                    
+                           
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            
+          
+      </div>
+  </div>
+</div>
+
+

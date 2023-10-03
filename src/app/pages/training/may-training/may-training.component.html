@@ -1,0 +1,39 @@
+ 
+<div class="main-content" style="margin-left: -38px;margin-top: 29px;">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card">
+                <div class="card-body">
+                     
+                 <table class="table">
+                  <thead>
+                    <th>Class description	</th>
+                    <th class="text-center">Training hours	</th>
+                    <th class="text-center">End date	</th>
+                    <th class="text-center">Start date	</th>
+                     
+                    <th class="text-center">Completed	</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of mytrainings">
+                      <td class="text-center">{{item.training.domain}}</td>
+                      <td class="text-center">{{item.training.duration}}</td>
+                      <td class="text-center">{{item.training.endDate|date:'dd-MM-yyyy'}}</td>
+                      <td class="text-center">{{item.training.startDate|date:'dd-MM-yyyy'}}</td>
+               
+                      <td class="text-center">{{item.training.completed}}</td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+                </div>
+              </div>
+              
+           
+        </div>
+    </div>
+</div>
+
+
+ 

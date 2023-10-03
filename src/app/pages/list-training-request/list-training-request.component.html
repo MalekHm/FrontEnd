@@ -1,0 +1,97 @@
+<div class="panel-header panel-header-sm">
+    <div class="header text-center">
+        <div class="breadmup">
+         <div class="dashboard">
+           <i class='bx bx-home'></i>
+           Dashboard  
+         </div>
+         <div class="pages">
+             / 
+         </div>
+         <div class="pages">
+          <i class='bx bxs-user-detail'></i>
+          Request list for training
+         </div>
+        </div>
+         </div>
+</div>
+<div class="main-content">  
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-header">
+                      
+                        <h4 class="card-category" style="text-align: center;">Request list for : {{list[0].training?.domain}} Training</h4>
+                      </div>
+                </div>
+               
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        
+                                    </div>
+                                
+                                    <div class="">
+                                        <table class="table">
+                                            <thead class="thead-light">
+                                                <tr>
+
+                                                    <th scope="col">Employee</th>
+                                                    <th scope="col">Employee Post</th>
+                                                    <th scope="col">Request date</th>
+                                                    
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="customtable">
+                                                <tr *ngFor="let item of list">
+
+                                                    <td>{{item.user?.firstName}} {{item?.user?.lastName}}</td>
+                                                    <td>{{item.user?.profil}} </td>
+                                                    <td>{{item.requestDate|date:"yyyy-MM-dd"}}</td>
+                                              
+                                             
+                                                     <ng-container *ngIf="item.status=='Rejected'">
+                                                        <td><label style="color: #fff !important;" class="badge badge-danger">Rejected</label></td>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="item.status=='Confirmed'">
+                                                        <td><label style="color: #fff !important;" class="badge badge-success">Accepted</label></td>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="item.status=='Pending'">
+                                                        <td><label style="color: #fff !important;" class="badge badge-warning">Pending</label></td>
+                                                    </ng-container>
+
+                                                    <td>
+                                                         <i class='bx bx-like' style="color: green;
+                                                         font-size: 22px;cursor: pointer;"
+                                                            (click)="validateRequest(item.id,'Accepted')"></i>
+                                                              
+                                                        </td>
+
+                                                </tr>
+
+
+
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+ 
+  
+  

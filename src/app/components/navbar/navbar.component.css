@@ -1,0 +1,11 @@
+.bx{
+    margin-top: 4px;
+    font-size: 16px;
+}
+
+.icon-social{
+    display: flex;
+    width: 14%;
+    JUSTIFY-CONTENT: inherit;
+    margin-left: 0px;
+}

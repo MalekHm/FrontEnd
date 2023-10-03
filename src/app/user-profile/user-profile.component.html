@@ -1,0 +1,184 @@
+<div class="panel-header panel-header-sm">
+  <div class="breadmup">
+    <div class="dashboard">
+      <i class='bx bx-home'></i>
+      Dashboard  
+    </div>
+    <div class="pages">
+        / 
+    </div>
+    <div class="pages">
+     <i class='bx bxs-user-detail'></i>
+      My Profile
+    </div>
+   </div>
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <section>
+        <div class="container py-5">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="card mb-4">
+                <div class="card-body text-center" style="    height: 375px;">
+                  <img *ngIf="user.profilImage==''" src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                    class="rounded-circle img-fluid" style="width: 150px;">
+                    <img *ngIf="user.profilImage!=''"  src="http://localhost:8081/api/user/downloadFile/{{user.profilImage}}" alt="avatar"
+                    class="rounded-circle img-fluid" style="width: 68px;">
+                    <label class="custom-file-upload file-profil"  >
+                      <input type="file" (change)="selectFile($event)"/>
+                      
+                  </label>
+                  <h5 class="my-3">{{user?.firstName}} {{user?.lastName}}</h5>
+                  <p class="text-muted mb-1">{{user?.profil}}</p>
+                
+                  <div class="d-flex justify-content-center mb-2">
+                    <button type="button" routerLink="/update/{{id}}" class="btn btn-primary">Update</button>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-lg-8">
+              <div class="card mb-4">
+                <div class="card-body" style="height: 378px;">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Full Name</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{user?.firstName}} {{user?.lastName}}</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Email</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{user?.email}}</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Phone</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{user?.phone}}</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Username</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{user?.username}}</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Address</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{user?.address}}</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">BirthDay</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{user?.birthDay|date:'yyyy-MM-dd'}}</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Post</p>
+                    </div>
+                    
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{user?.profil}}</p>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card mb-4 mb-md-0">
+                <div class="card-body">
+                  <p class="mb-4"><span class="text-primary font-italic me-1 title "> Skills</span><i class='bx bx-edit-alt' routerLink="/skills"></i> </p>
+                  <ng-container *ngFor="let item of user.skills">
+
+                    <div style="
+                    display: flex;
+                    justify-content: space-between;
+                    margin: 8px;">
+                      <p class="mb-1" style="font-size: .77rem;">{{item.title}}</p>
+                      <span>{{item.score}}</span>
+                    </div>
+                  </ng-container>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 mb-md-0">
+                <div class="card-body">
+                  <p class="mb-4">
+                    
+                    <span class="text-primary font-italic me-1 title">Education</span> 
+                    <i class='bx bx-edit-alt' routerLink="/skills"></i>
+                  </p>
+                  <ng-container *ngFor="let item of user.educations">
+
+                    <div style="
+                    display: flex;
+                    justify-content: space-between;
+                    margin: 8px;">
+                      <p class="mb-1" style="font-size: .77rem;">{{item.universite}}</p>
+                      <span>{{item.diplome}}</span>
+                    </div>
+                  </ng-container>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 mb-md-0">
+                <div class="card-body">
+                  <p class="mb-4"><span class="text-primary font-italic me-1 title">Experience </span>
+                     <i class='bx bx-edit-alt' routerLink="/skills"></i> </p>
+                  <ng-container *ngFor="let item of user.experiences">
+
+                    <div style="
+                    display: flex;
+                    justify-content: space-between;
+                    margin: 8px;">
+                      <p class="mb-1" style="font-size: .77rem;">{{item.employer}}</p>
+                      <span>{{item.jobTitle}}</span>
+                    </div>
+                  </ng-container>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

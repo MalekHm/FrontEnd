@@ -1,0 +1,65 @@
+<div class="logo">
+    <div class="container" style="border-radius: 14px !important;    top: -155px;">
+    <input type="checkbox" id="flip">
+    <div class="cover">
+      <div class="front">
+        <img src="../../../assets/img/v-rh.jpeg" style="opacity: 0.8;    border-radius: 0px 14px 14px 0px !important;" alt="">
+       
+      </div>
+      <div class="back">
+        <!--<img class="backImg" src="images/backImg.jpg" alt="">-->
+        <div class="text">
+          <span class="text-1">Complete miles of journey <br> with one step</span>
+          <span class="text-2">Let's get started</span>
+        </div> 
+      </div>
+    </div>
+    <div class="forms">
+        <div class="form-content">
+          <div class="login-form">
+            <div class="title">Login</div>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-user"></i>
+                <input type="text" formControlName="username" placeholder="Enter your username" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" formControlName="password" placeholder="Enter your password" required>
+              </div>
+             
+              <div class="button input-box">
+                <button type="submit" [disabled]="loginForm.invalid">Sign in</button>
+              </div> 
+              <div class="text sign-up-text" style="text-align: center;" >You Forget your Password? <label for="flip" routerLink="/forget-password">Reset Now</label></div>
+
+            </div>
+        </form>
+      </div>
+        <div class="signup-form"  >
+          <div    style="color: #fff !important;">Signup</div>
+        <form  >
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-user signup"  style="color: #fff !important;"></i>
+                <input type="text" placeholder="Enter your name" class="signupI" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-envelope signup" style="color: #fff !important;"></i>
+                <input type="text" placeholder="Enter your email" class="signupI" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-lock signup"  style="color: #fff !important;"></i>
+                <input type="password " placeholder="Enter your password" class="signupI" required>
+              </div>
+              <div class="button input-box  "  style="color: #fff !important;">
+                <input style="background: #fff !important; color: #fff !important;    border-color: #fff !important;" type="submit" value="Sumbit">
+              </div>
+              <div class="text sign-up-text" class="signupI">Already have an account? <label for="flip">Login now</label></div>
+            </div>
+      </form> 
+    </div>
+    </div>
+    </div></div>
+</div>

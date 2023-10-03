@@ -1,0 +1,55 @@
+<div class="panel-header panel-header-sm"   style="height: 195px;">
+    <div class="header text-center">
+        <div class="breadmup">
+         <div class="dashboard">
+           <i class='bx bx-home'></i>
+           Dashboard  
+         </div>
+         <div class="pages">
+             / 
+         </div>
+         <div class="pages">
+            <i class='bx bx-certification'></i>
+           Training
+         </div>
+        </div>
+         </div>
+         <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            
+    
+                <button class="nav-link active" id="nav-Training-tab" data-bs-toggle="tab"
+                 data-bs-target="#nav-Training"
+                    type="button" role="tab" aria-controls="nav-Training" 
+                    aria-selected="false">Training List</button>
+             
+                    <button class="nav-link" id="nav-my-Training-tab" data-bs-toggle="tab" 
+                    data-bs-target="#nav-my-Training" 
+                    type="button"
+                    role="tab" aria-controls="nav-my-Training" aria-selected="false">My Training</button>
+     
+            </div>
+        </nav>
+    </div>
+    <div class="main-content">
+        <div class="row">
+    
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active " id="nav-Training" role="tabpanel"
+                aria-labelledby="nav-Training"
+                   tabindex="0">
+                   <app-training></app-training>
+                    
+               </div>
+                <div class="tab-pane fade show " id="nav-my-Training"
+                 role="tabpanel"
+                    aria-labelledby="nav-my-Training-tab" tabindex="0">
+                 <app-may-training></app-may-training>
+    
+                   
+                </div>
+    
+           
+            </div>
+        </div>
+    </div>

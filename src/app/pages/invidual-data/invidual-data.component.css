@@ -1,0 +1,41 @@
+nav{
+    
+    margin-left: 427px;
+    margin-top: 40px;
+    width: 403px;
+    padding-bottom: 20px;
+}
+.nav-tabs{
+    font-size: 15px;
+    font-weight: bold;
+}
+.nav-tabs .nav-link.active{
+    
+    color: #ffffff;
+    background-color: #ff070c;
+    border-color: #ff070c;
+    border-radius: 8px;
+}
+
+.nav-link{
+    color: #ffff !important;
+}
+.breadmup{
+    color: white;
+    display: flex;
+    margin-left: 25px;
+    font-size: 14px;
+}
+.pages{
+    margin-left: 12px;
+}
+
+@media (max-width:575.98px){
+    nav{
+        margin-left: -74px;
+    }
+    .nav{
+        font-size: 11px !important;
+        display: flex !important;
+    }
+}

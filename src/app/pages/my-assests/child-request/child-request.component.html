@@ -1,0 +1,109 @@
+ 
+<div class="main-content" style="margin-left: -38px;margin-top: 29px;">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card">
+              
+                <div class="card-body">
+                  <h5 class="card-category">Child Request</h5>
+                                 <div class="search">
+                     
+                
+                                    <form class="row g-3 needs-validation" [formGroup]="childForm" (ngSubmit)="onSubmit()" >
+                                        <div class="col-md-6">
+                                          <label for="validationCustom01" class="form-label">First name</label>
+                                          <input formControlName="firstName" type="text" class="form-control" id="validationCustom01"   required>
+                                           
+                                        </div>
+                                        <div class="col-md-6">
+                                          <label for="validationCustom02" class="form-label">Last name</label>
+                                          <input formControlName="lastName" type="text" class="form-control" id="validationCustom02"  required>
+                                          
+                                        </div>
+                                        <div class="col-md-6">
+                                          <label for="validationCustom01" class="form-label">Age</label>
+                                          <input formControlName="age" type="number" class="form-control" id="validationCustom01"   required>
+                                           
+                                        </div>
+                                       
+                                        
+                    
+                                        <div class="col-md-6">
+                                          <label for="validationCustom03" class="form-label">Comment</label>
+                                          <input formControlName="comment" style="    height: 120px;" type="text" class="form-control textarea" id="validationCustom03" required>
+                                         
+                                        </div>
+                                      
+                                        
+                                        <div class="col-12">
+                                          <button class="btn btn-primary" type="submit">Send</button>
+                                        </div>
+                                      </form>
+                  
+
+                 </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="card">
+                    <div class="card-header">
+                    
+                      <h4 class="card-title">Request List</h4>
+                    </div>
+                    <div class="card-body">
+                      <div  >
+                        <table class="table">
+                          <thead class=" text-primary">
+                            <th>
+                              Age
+                            </th>
+                            <th>
+                              FirstName
+                            </th>
+                            <th>
+                              LastName
+                            </th>
+                            <th>
+                              Registration Date
+                            </th>
+                            <th  >
+                              Comment
+                            </th>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of childRequest">
+                              <td>
+                              {{item.age}}
+                              </td>
+                              <td>
+                               {{ item.firstName}}
+                              </td>
+                              <td>
+                                {{item.lastName}}
+                              </td>
+                              <td  >
+                                {{item.registrationDate|date}}
+                              </td>
+                              <td  >
+                                {{item.comment}}
+                              </td>
+                            </tr>
+                           
+                             
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              
+            
+        </div>
+    </div>
+</div>
+
+
+ 

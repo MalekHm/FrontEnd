@@ -1,0 +1,614 @@
+<div class="panel-header panel-header-sm">
+    <div class="header text-center">
+        <div class="breadmup">
+            <div class="dashboard">
+                <i class='bx bx-home'></i>
+                Dashboard
+            </div>
+            <div class="pages">
+                /
+            </div>
+            <div class="pages">
+                <i class='bx bxs-timer'></i>
+                Planing's
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"> Plannings request</h4>
+                </div>
+                <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2"
+                    role="tablist"
+                    style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
+
+                    <li class="nav-item" role="presentation">
+                        <button (click)="remoteE()" class="nav-link active rounded-5" id="contact-tab2"
+                            data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Remote</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button (click)="permissionE()" class="nav-link rounded-5" id="contact-tab2"
+                            data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Permission</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button (click)="holidayE()" class="nav-link  rounded-5" id="home-tab2" data-bs-toggle="tab"
+                            type="button" role="tab" aria-selected="true">Holiday</button>
+                    </li>
+                </ul>
+                <ng-container *ngIf="holiday">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title m-b-0">Holiday request</h5>
+                                    </div>
+                                    <div class="mb-2 d-flex justify-content-between align-items-center reqsF">
+                                        <form [formGroup]="searchBydateForm" (ngSubmit)="searchbyDateHoliday()">
+
+                                            <div class="position-relative">
+                                                <label class="position-absolute "
+                                                    style="    COLOR: BLACK !important;">Start
+                                                    date </label>
+                                                <input class="form-control w-100 search" type="date"
+                                                    formControlName="start">
+                                            </div>
+                                            <div class="position-relative">
+                                                <label class="position-absolute "
+                                                    style="    COLOR: BLACK !important;">End
+                                                    date </label>
+                                                <input class="form-control w-100 search" type="date"
+                                                    formControlName="end">
+                                            </div>
+                                            <button class="btn btn-primary" type="submit">Filter <i
+                                                    class='bx bx-filter-alt'></i></button>
+                                            <button class="btn btn-warning" (click)="holidayReport()">Export <i
+                                                    class='bx bxs-file-export'></i></button>
+
+                                        </form>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class="thead-light">
+                                                <tr>
+
+                                                    <th scope="col">Employee</th>
+                                                    <th scope="col">Start date</th>
+                                                    <th scope="col">End date</th>
+                                                    <th scope="col">Request Date</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="customtable">
+                                                <tr *ngFor="let item of holidays">
+
+                                                    <td>{{item.user.firstName}} {{item.user.lastName}}</td>
+                                                    <td>{{item.start }}</td>
+
+                                                    <td>{{item.end }}</td>
+                                                    <td>{{item.registrationDate|date:"yyyy-MM-dd"}}</td>
+                                                    <ng-container *ngIf="item.status=='Rejected'">
+                                                        <td><label style="    padding: 6px;
+                                                            color: #fff !important;"
+                                                                class="badge badge-danger">Rejected</label></td>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="item.status=='Accepted'">
+                                                        <td><label slot="    padding: 6px;
+                                                            color: #fff !important;"
+                                                                class="badge badge-success">Accepted</label></td>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="item.status=='Pending'">
+                                                        <td><label style="    padding: 6px;
+                                                            color: #fff !important;"
+                                                                class="badge badge-warning">Pending</label></td>
+                                                    </ng-container>
+
+                                                    <td>
+                                                        <i class='bx bx-like' style="color: green;
+                                                         font-size: 22px;"
+                                                            (click)="validateHoliday(item.id,'Accepted')"></i>
+                                                        <i class='bx bx-dislike'
+                                                            style="color: red !important;font-size: 22px;margin-left: 7px;"
+                                                            (click)="validateHoliday(item.id,'Rejected')"></i>
+
+                                                    </td>
+
+                                                </tr>
+
+
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </ng-container>
+
+
+                <ng-container *ngIf="remote">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title m-b-0">Remote request</h5>
+                                    </div>
+                                    <div class="mb-2 d-flex justify-content-between align-items-center reqsF">
+                                        <form [formGroup]="searchBydateForm" (ngSubmit)="searchbyDateRemote()">
+                                            <div class="position-relative">
+                                                <label class="position-absolute "
+                                                    style="    COLOR: BLACK !important;">Start
+                                                    date </label>
+                                                <input class="form-control w-100 search" type="date"
+                                                    formControlName="start">
+                                            </div>
+                                            <div class="position-relative">
+                                                <label class="position-absolute "
+                                                    style="    COLOR: BLACK !important;">End
+                                                    date </label>
+                                                <input class="form-control w-100 search" type="date"
+                                                    formControlName="end">
+                                            </div>
+                                            <button class="btn btn-primary" type="submit">Filter <i
+                                                    class='bx bx-filter-alt'></i></button>
+                                            <button class="btn btn-warning" (click)="remoteReport()">Export <i
+                                                    class='bx bxs-file-export'></i></button>
+
+                                        </form>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class="thead-light">
+                                                <tr>
+
+                                                    <th scope="col">Employee</th>
+                                                    <th scope="col">Start date</th>
+                                                    <th scope="col">End date</th>
+                                                    <th scope="col">Request Date</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="customtable">
+                                                <tr *ngFor="let item of remotes">
+
+                                                    <td>{{item.user.firstName}} {{item.user.lastName}}</td>
+                                                    <td>{{item.start|date:"yyyy-MM-dd"}}</td>
+                                                    <td>{{item.end|date:"yyyy-MM-dd"}}</td>
+                                                    <td>{{item.registrationDate|date:"yyyy-MM-dd"}}</td>
+                                                    <ng-container *ngIf="item.status=='Rejected'">
+                                                        <td><label style="    padding: 6px;
+                                                            color: #fff !important;"
+                                                                class="badge badge-danger">Rejected</label></td>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="item.status=='Accepted'">
+                                                        <td><label style="    padding: 6px;
+                                                            color: #fff !important;"
+                                                                class="badge badge-success">Accepted</label></td>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="item.status=='Pending'">
+                                                        <td><label style="    padding: 6px;
+                                                            color: #fff !important;"
+                                                                class="badge badge-warning">Pending</label></td>
+                                                    </ng-container>
+
+                                                    <td>
+                                                        <i class='bx bx-like' style="color: green;
+                                                         font-size: 22px;"
+                                                            (click)="validateRemote(item.id,'Accepted')"></i>
+                                                        <i class='bx bx-dislike'
+                                                            style="color: red !important;font-size: 22px;margin-left: 7px;"
+                                                            (click)="validateRemote(item.id,'Rejected')"></i>
+
+                                                    </td>
+
+                                                </tr>
+
+
+
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="permission">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title m-b-0">Permission requests</h5>
+                                    </div>
+                                    <div class="mb-2 d-flex justify-content-between align-items-center reqsF">
+                                        <form [formGroup]="searchBydateForm" (ngSubmit)="searchbyDatePermission()">
+                                            <div class="position-relative">
+                                                <label class="position-absolute "
+                                                    style="    COLOR: BLACK !important;">Start
+                                                    date </label>
+                                                <input class="form-control w-100 search" type="date"
+                                                    formControlName="start">
+                                            </div>
+                                            <div class="position-relative">
+                                                <label class="position-absolute "
+                                                    style="    COLOR: BLACK !important;">End
+                                                    date </label>
+                                                <input class="form-control w-100 search" type="date"
+                                                    formControlName="end">
+                                            </div>
+                                            <button class="btn btn-primary" type="submit">Filter <i
+                                                    class='bx bx-filter-alt'></i></button>
+                                            <button class="btn btn-warning" (click)="permissionReport()">Export <i
+                                                    class='bx bxs-file-export'></i></button>
+                                        </form>
+
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class="thead-light">
+                                                <tr>
+
+                                                    <th scope="col">Employee</th>
+                                                    <th scope="col">Start hour</th>
+                                                    <th scope="col">End hour</th>
+                                                    <th scope="col">Request Date</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="customtable">
+                                                <tr *ngFor="let item of permissions">
+
+                                                    <td>{{item.user.firstName}} {{item.user.lastName}}</td>
+                                                    <td>{{item.start }}</td>
+                                                    <td>{{item.end }}</td>
+                                                    <td>{{item.registrationDate|date:"yyyy-MM-dd"}}</td>
+                                                    <ng-container *ngIf="item.status=='Rejected'">
+                                                        <td><label style="    padding: 6px;
+                                                            color: #fff !important;"
+                                                                class="badge badge-danger">Rejected</label></td>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="item.status=='Accepted'">
+                                                        <td><label style="    padding: 6px;
+                                                            color: #fff !important;"
+                                                                class="badge badge-success">Accepted</label></td>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="item.status=='Pending'">
+                                                        <td><label style="    padding: 6px;
+                                                            color: #fff !important;"
+                                                                class="badge badge-warning">Pending</label></td>
+                                                    </ng-container>
+
+                                                    <td>
+                                                        <i class='bx bx-like' style="color: green;
+                                                         font-size: 22px;"
+                                                            (click)="validatePermission(item.id,'Accepted')"></i>
+                                                        <i class='bx bx-dislike'
+                                                            style="color: red !important;font-size: 22px;margin-left: 7px;"
+                                                            (click)="validatePermission(item.id,'Rejected')"></i>
+
+                                                    </td>
+
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </ng-container>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+ 
+
+ 
+
+ 
+
+
+
+<div  style="display: none;">
+    <div class="card" >
+   
+      <div class="col-md-12">   
+        <div class="row">
+           
+               <div class="receipt-main col-xs-12 col-sm-12   col-xs-offset-1 col-sm-offset-1 col-md-offset-3" id="permission_report" #permission_report>
+                   <div class="row">
+                 <div class="receipt-header">
+                 <div class="col-xs-6 col-sm-6 col-md-6">
+                   <div class="receipt-left">
+                     <img class="img-responsive" alt="iamgurdeeposahan" src="../../assets/log.png" style="width: 71px; border-radius: 43px;">
+                   </div>
+                 </div>
+              
+               </div>
+                   </div>
+             
+             <div class="row">
+               <div class="receipt-header receipt-header-mid">
+                 <div class="col-xs-8 col-sm-8 col-md-8 text-left">
+                   <div class="receipt-right">
+                     <h5>Vermeg HR </h5>
+                     <p><b>Mobile :</b> +1 12345-4569</p>
+                     <p><b>Email :</b> vermeg@gmail.com</p>
+                     <p><b>Address :</b> Lac 1, Tunis</p>
+                   </div>
+                 </div>
+                 <div class="col-xs-12  col-sm-12  col-md-12 ">
+                   <div class="receipt-left">
+                    <h4 class="card-title" style="text-align: center;"> List of permission request</h4>
+                   </div>
+                 </div>
+               </div>
+                   </div>
+             
+                   <div>
+                      
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead class=" text-primary">
+                           
+
+                            <th scope="col">Employee</th>
+                            <th scope="col">Start hour</th>
+                            <th scope="col">End hour</th>
+                            <th scope="col">Request Date</th>
+                            <th scope="col">Status</th>
+                                
+                           
+                        </thead>
+                        <tbody>
+                             <tr *ngFor="let item of permissions">
+
+                                <td>{{item.user.firstName}} {{item.user.lastName}}</td>
+                                <td>{{item.start }}</td>
+                                <td>{{item.end }}</td>
+                                <td>{{item.registrationDate|date:"yyyy-MM-dd"}}</td>
+                               <td>{{item.status}}</td>
+
+                            
+
+                            </tr>
+          
+                        </tbody>
+                      </table>
+                    
+                    </div>
+  
+  
+  
+  
+                   </div>
+             
+             <div class="row">
+               <div class="receipt-header receipt-header-mid receipt-footer">
+                 <div class="col-xs-8 col-sm-8 col-md-8 text-left">
+                   <div class="receipt-right">
+                     <p><b>Date :</b> {{date|date:'dd-MM-yyyy'}}</p>
+                     <h5 style="color: rgb(140, 140, 140);">Vermeg Team - Thanks .!</h5>
+                   </div>
+                 </div>
+                 
+               </div>
+                   </div>
+             
+               </div>    
+         </div>
+       </div>
+    </div>
+  </div>
+
+  <div  style="display: none;">
+    <div class="card" >
+   
+      <div class="col-md-12">   
+        <div class="row">
+           
+               <div class="receipt-main col-xs-12 col-sm-12   col-xs-offset-1 col-sm-offset-1 col-md-offset-3" id="holiday_report" #holiday_report>
+                   <div class="row">
+                 <div class="receipt-header">
+                 <div class="col-xs-6 col-sm-6 col-md-6">
+                   <div class="receipt-left">
+                     <img class="img-responsive" alt="iamgurdeeposahan" src="../../assets/log.png" style="width: 71px; border-radius: 43px;">
+                   </div>
+                 </div>
+              
+               </div>
+                   </div>
+             
+             <div class="row">
+               <div class="receipt-header receipt-header-mid">
+                 <div class="col-xs-8 col-sm-8 col-md-8 text-left">
+                   <div class="receipt-right">
+                     <h5>Vermeg HR </h5>
+                     <p><b>Mobile :</b> +1 12345-4569</p>
+                     <p><b>Email :</b> vermeg@gmail.com</p>
+                     <p><b>Address :</b> Lac 1, Tunis</p>
+                   </div>
+                 </div>
+                 <div class="col-xs-12  col-sm-12  col-md-12 ">
+                   <div class="receipt-left">
+                    <h4 class="card-title" style="text-align: center;"> List of Holiday request</h4>
+                   </div>
+                 </div>
+               </div>
+                   </div>
+             
+                   <div>
+                      
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="thead-light">
+                                <tr>
+
+                                    <th scope="col">Employee</th>
+                                    <th scope="col">Start Date </th>
+                                    <th scope="col">End Date</th>
+                                    <th scope="col">Request Date</th>
+                                    <th scope="col">Status</th>
+
+                                </tr>
+                            </thead>
+                            <tbody class="customtable">
+                                <tr *ngFor="let item of holidays">
+
+                                    <td>{{item.user.firstName}} {{item.user.lastName}}</td>
+                                    <td>{{item.start |date:"yyyy-MM-dd"}}</td>
+                                    <td>{{item.end|date:"yyyy-MM-dd" }}</td>
+                                    <td>{{item.registrationDate|date:"yyyy-MM-dd"}}</td>
+                                    <td>{{item.status}}</td>
+
+
+
+
+                                </tr>
+
+
+
+
+
+                            </tbody>
+                        </table>
+                    
+                    </div>
+  
+  
+  
+  
+                   </div>
+             
+             <div class="row">
+               <div class="receipt-header receipt-header-mid receipt-footer">
+                 <div class="col-xs-8 col-sm-8 col-md-8 text-left">
+                   <div class="receipt-right">
+                     <p><b>Date :</b> {{date|date:'dd-MM-yyyy'}}</p>
+                     <h5 style="color: rgb(140, 140, 140);">Vermeg Team - Thanks .!</h5>
+                   </div>
+                 </div>
+                 
+               </div>
+                   </div>
+             
+               </div>    
+         </div>
+       </div>
+    </div>
+  </div>
+
+
+  <div  style="display: none;">
+    <div class="card" >
+   
+      <div class="col-md-12">   
+        <div class="row">
+           
+               <div class="receipt-main col-xs-12 col-sm-12   col-xs-offset-1 col-sm-offset-1 col-md-offset-3" id="remote_report" #remote_report>
+                   <div class="row">
+                 <div class="receipt-header">
+                 <div class="col-xs-6 col-sm-6 col-md-6">
+                   <div class="receipt-left">
+                     <img class="img-responsive" alt="iamgurdeeposahan" src="../../assets/log.png" style="width: 71px; border-radius: 43px;">
+                   </div>
+                 </div>
+              
+               </div>
+                   </div>
+             
+             <div class="row">
+               <div class="receipt-header receipt-header-mid">
+                 <div class="col-xs-8 col-sm-8 col-md-8 text-left">
+                   <div class="receipt-right">
+                     <h5>Vermeg HR </h5>
+                     <p><b>Mobile :</b> +1 12345-4569</p>
+                     <p><b>Email :</b> vermeg@gmail.com</p>
+                     <p><b>Address :</b> Lac 1, Tunis</p>
+                   </div>
+                 </div>
+                 <div class="col-xs-12  col-sm-12  col-md-12 ">
+                   <div class="receipt-left">
+                    <h4 class="card-title" style="text-align: center;"> List of Remote request</h4>
+                   </div>
+                 </div>
+               </div>
+                   </div>
+             
+                   <div>
+                      
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="thead-light">
+                                <tr>
+
+                                    <th scope="col">Employee</th>
+                                    <th scope="col">Start date</th>
+                                    <th scope="col">End date</th>
+                                    <th scope="col">Request Date</th>
+                                    <th scope="col">Status</th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody class="customtable">
+                                <tr *ngFor="let item of remotes">
+
+                                    <td>{{item.user.firstName}} {{item.user.lastName}}</td>
+                                    <td>{{item.start|date:"yyyy-MM-dd"}}</td>
+                                    <td>{{item.end|date:"yyyy-MM-dd"}}</td>
+                                    <td>{{item.registrationDate|date:"yyyy-MM-dd"}}</td>
+                                   <td>{{item.status}}</td>
+
+                                </tr>
+
+
+
+
+
+                            </tbody>
+                        </table>
+                    
+                    </div>
+  
+  
+  
+  
+                   </div>
+             
+             <div class="row">
+               <div class="receipt-header receipt-header-mid receipt-footer">
+                 <div class="col-xs-8 col-sm-8 col-md-8 text-left">
+                   <div class="receipt-right">
+                     <p><b>Date :</b> {{date|date:'dd-MM-yyyy'}}</p>
+                     <h5 style="color: rgb(140, 140, 140);">Vermeg Team - Thanks .!</h5>
+                   </div>
+                 </div>
+                 
+               </div>
+                   </div>
+             
+               </div>    
+         </div>
+       </div>
+    </div>
+  </div>
+  

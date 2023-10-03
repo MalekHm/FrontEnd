@@ -1,0 +1,91 @@
+
+
+<div class="panel-header panel-header-sm">
+    <div class="header text-center">
+        <div class="breadmup">
+            <div class="dashboard">
+                <i class='bx bx-home'></i>
+                Dashboard
+            </div>
+            <div class="pages">
+                /
+            </div>
+            <div class="pages">
+                <i class='bx bxs-user'></i>
+               Add new contract
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main-content" style="margin-top: 29px;">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="container">
+                <header>Contract Details</header>
+                <form [formGroup]="contractForm" (ngSubmit)="onSubmit()" >
+                    <div class="form first">
+                        <div class="details personal">
+
+                            <div class="fields">
+                                <div class="input-field"  >
+                                    <label>Employee</label>
+                                    <select required formControlName="employee" >
+                                        <option value="">Select role</option>
+                                         <ng-container *ngFor="let item of users">
+                                         
+                                        <option [value]="item.id" >{{item.firstName}} {{item.lastName}}</option>
+                                    </ng-container>
+                                    </select>
+                                </div>
+                                <div class="input-field">
+                                    <label>Contract Type</label>
+                                    <input type="text" formControlName="type" placeholder="Enter contract Type" required>
+                                </div>
+                                <div class="input-field">
+                                    <label>Duration</label>
+                                    <input type="text" formControlName="duration" placeholder="Enter duration" required>
+                                </div>
+                              
+                                <div class="input-field  " style="    width: 950px;">
+                                    <label>Nature</label>
+                                    <input type="text" formControlName="nature" placeholder="Enter nature" required>
+                                </div>
+                                <div class="input-field  "  style="    width: 950px;">
+                                    <label>Working days</label>
+                                    <input type="text" formControlName="workingCalendar" placeholder="Enter Working days" required>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="details ID">
+
+                            <div class="fields">
+                                <div class="input-field">
+                                    <label>Start date</label>
+                                    <input type="date" formControlName="startDate" placeholder="Start date" required>
+                                </div>
+                                <div class="input-field">
+                                    <label>End date</label>
+                                    <input type="date" formControlName="endDate" placeholder="End date" required>
+                                </div>
+                               
+
+                               
+
+                            </div>
+                      
+            
+                            <button type="submit"  style="background: red;" >
+                               Save 
+                            </button>
+                        </div>
+                    </div>
+                     
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
